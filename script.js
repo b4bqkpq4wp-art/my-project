@@ -1,27 +1,24 @@
 // script.js
 document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.createElement('div');
-    menuToggle.className = 'menu-toggle';
-    menuToggle.innerHTML = `
-        <span></span>
-        <span></span>
-        <span></span>
-    `;
-    
-    const headerContainer = document.querySelector('.header__container');
-    headerContainer.insertBefore(menuToggle, headerContainer.firstChild);
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav__list');
     
     menuToggle.addEventListener('click', function() {
-        const sidebar = document.querySelector('.header__sidebar');
-        sidebar.classList.toggle('sidebar__open');
+        navList.classList.toggle('active');
     });
     
     // Закрыть меню при клике на ссылку
-    const sidebarLinks = document.querySelectorAll('.sidebar__link');
-    sidebarLinks.forEach(link => {
+    const navLinks = document.querySelectorAll('.nav__link');
+    navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            const sidebar = document.querySelector('.header__sidebar');
-            sidebar.classList.remove('sidebar__open');
+            navList.classList.remove('active');
         });
+    });
+    
+    // Закрыть меню при клике вне его области
+    document.addEventListener('click', function(event) {
+        if (!navList.contains(event.target) && !menuToggle.contains(event.target)) {
+            navList.classList.remove('active');
+        }
     });
 });
