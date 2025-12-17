@@ -1,580 +1,354 @@
 /* Сброс стилей */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Переменные с цветами из макета */
-:root {
-  --primary-color: #415167;
-  --accent-color: #C7A17A;
-  --dark-color: #151D28;
-  --light-color: #EDF0F5;
-  --off-white: #F9F5E8;
-  --text-color: #333;
-  --white-color: #fff;
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
-}
-
-/* Подключение шрифтов из макета через Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Nunito:wght@300;400;600;700&display=swap');
-
-/* Базовые стили */
 body {
-  font-family: 'Nunito', system-ui, sans-serif;
-  color: var(--text-color);
-  line-height: 1.6;
-  background-color: var(--white-color);
-  overflow-x: hidden;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
 }
 
 .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Шапка сайта */
+/* Header styles */
 .header {
-  background-color: var(--white-color);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
 }
 
-.header__logo {
-  display: flex;
-  align-items: center;
-  height: 50px;
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.header__logo-img {
-  height: 100%;
-  object-fit: contain;
-}
-
-.nav {
-  display: flex;
-  justify-content: flex-end;
-  padding: 20px 0;
+.header__logo img {
+    height: 40px;
 }
 
 .nav__list {
-  display: flex;
-  list-style: none;
-  gap: 25px;
+    display: flex;
+    gap: 25px;
+    list-style: none;
 }
 
 .nav__link {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 1px;
-  padding: 5px 0;
-  position: relative;
-  transition: var(--transition);
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: color 0.3s ease;
 }
 
-.nav__link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--primary-color);
-  transition: var(--transition);
+.nav__link:hover {
+    color: #2c5530;
 }
 
-.nav__link:hover::after,
-.nav__item--active .nav__link::after {
-  width: 100%;
-}
-
-.nav__link:hover,
-.nav__item--active .nav__link {
-  color: var(--primary-color);
-}
-
-/* Герой-секция */
+/* Hero section */
 .hero {
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/img/hero-bg.jpg') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: var(--white-color);
+    background-color: #f8f9fa;
+    padding: 60px 0;
 }
 
-.hero__content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+.hero__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
 }
 
 .hero__title {
-  font-family: 'Montserrat', serif;
-  font-size: 5rem;
-  font-weight: 900;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 70px;
+    margin-bottom: 10px;
 }
 
 .hero__subtitle {
-  font-family: 'Nunito', sans-serif;
-  font-size: 2rem;
-  font-weight: 300;
-  letter-spacing: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 34px;
+    color: #2c5530;
 }
 
-/* Секция с особенностями кофе */
-.coffee-section {
-  padding: 80px 0;
-  background-color: var(--light-color);
+.hero__image img {
+    width: 100%;
+    height: auto;
+}
+
+/* Features section */
+.features {
+    padding: 60px 0;
+}
+
+.features__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.feature-card {
+    text-align: center;
+}
+
+.feature-card__icon {
+    margin-bottom: 20px;
+}
+
+.feature-card__icon img {
+    width: 60px;
+    height: 60px;
+}
+
+.feature-card__title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.feature-card__text {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: #666;
+}
+
+/* Products section */
+.products {
+    padding: 60px 0;
+    background-color: #f8f9fa;
 }
 
 .section-title {
-  font-family: 'Montserrat', serif;
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 60px;
-  color: var(--primary-color);
-  position: relative;
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.section-title::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 3px;
-  background-color: var(--accent-color);
-  margin: 15px auto 0;
-}
-
-.coffee-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.feature {
-  background-color: var(--white-color);
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: var(--box-shadow);
-  text-align: center;
-  transition: var(--transition);
-}
-
-.feature:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.feature__icon {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  color: var(--primary-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.feature__icon img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-}
-
-.feature__title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: var(--primary-color);
-}
-
-.feature__text {
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.7;
-}
-
-/* Сетка продуктов */
-.products-section {
-  padding: 80px 0;
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
 }
 
 .product-card {
-  background-color: var(--white-color);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: var(--box-shadow);
-  transition: var(--transition);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
 }
 
-.product-card__image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.product-card__content {
-  padding: 20px;
+.product-card__image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .product-card__title {
-  font-size: 1.4rem;
-  margin-bottom: 8px;
-  color: var(--primary-color);
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 15px 0 5px;
+    text-align: center;
 }
 
-.product-card__desc {
-  color: #777;
-  margin-bottom: 12px;
-  font-style: italic;
+.product-card__description {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-style: italic;
+    text-align: center;
+    color: #666;
+    margin-bottom: 10px;
 }
 
 .product-card__price {
-  font-family: 'Montserrat', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  margin: 15px 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #2c5530;
+    margin-bottom: 15px;
 }
 
 .product-card__actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 20px 20px;
 }
 
-/* Giftset секция */
-.giftset-section {
-  padding: 80px 0;
-  background-color: var(--light-color);
-}
-
-.giftset-card {
-  display: flex;
-  background-color: var(--white-color);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: var(--box-shadow);
-}
-
-.giftset-card__image {
-  width: 40%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.giftset-card__content {
-  padding: 30px;
-  width: 60%;
-}
-
-.giftset-card__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.giftset-card__badge {
-  background-color: var(--accent-color);
-  color: var(--white-color);
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.giftset-card__price {
-  font-family: 'Montserrat', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--accent-color);
-}
-
-.giftset-card__title {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: var(--primary-color);
-}
-
-.giftset-card__text {
-  margin-bottom: 25px;
-  line-height: 1.8;
-  color: #555;
-}
-
-.giftset-card__specs {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 25px;
-}
-
-.giftset-card__spec {
-  flex: 1;
-}
-
-.giftset-card__spec-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: var(--primary-color);
-}
-
-.giftset-card__spec-value {
-  color: #666;
-}
-
-.giftset-card__actions {
-  display: flex;
-  gap: 15px;
-}
-
-/* Combo секция */
-.combo-section {
-  padding: 80px 0;
-  text-align: center;
-}
-
-.combo-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.combo-card {
-  background-color: var(--white-color);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: var(--box-shadow);
-  display: flex;
-  flex-direction: column;
-}
-
-.combo-card__image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.combo-card__content {
-  padding: 30px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--light-color);
-}
-
-.combo-card__title {
-  font-family: 'Montserrat', serif;
-  font-size: 1.8rem;
-  color: var(--primary-color);
-  margin-bottom: 15px;
-}
-
-.combo-card__number {
-  width: 60px;
-  height: 60px;
-  background-color: var(--accent-color);
-  color: var(--white-color);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.combo-card__price {
-  font-family: 'Montserrat', serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-}
-
-/* Футер */
-.footer {
-  background-color: var(--dark-color);
-  color: var(--white-color);
-  padding: 30px 0;
-}
-
-.footer__content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer__logo {
-  font-family: 'Montserrat', serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--light-color);
-}
-
-.footer__copyright {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
-}
-
-/* Кнопки */
+/* Buttons */
 .btn {
-  padding: 10px 25px;
-  border: none;
-  border-radius: 4px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
 
 .btn--primary {
-  background-color: var(--primary-color);
-  color: var(--white-color);
+    background-color: #2c5530;
+    color: white;
 }
 
 .btn--primary:hover {
-  background-color: #3a485a;
-  transform: translateY(-2px);
+    background-color: #1e3a22;
 }
 
 .btn--secondary {
-  background-color: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+    background-color: transparent;
+    color: #2c5530;
+    border: 1px solid #2c5530;
 }
 
 .btn--secondary:hover {
-  background-color: var(--primary-color);
-  color: var(--white-color);
+    background-color: #f0f0f0;
 }
 
-.btn--large {
-  padding: 12px 30px;
-  font-size: 1rem;
+/* Giftset section */
+.giftset {
+    padding: 60px 0;
 }
 
-/* Интерактивность */
-a:focus,
-button:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
+.giftset__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
 }
 
-/* Якорная навигация с плавной прокруткой */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Медиа-запросы для адаптивности */
-@media (max-width: 992px) {
-  .hero__title {
-    font-size: 4rem;
-  }
-  
-  .hero__subtitle {
-    font-size: 1.7rem;
-  }
-  
-  .giftset-card {
-    flex-direction: column;
-  }
-  
-  .giftset-card__image,
-  .giftset-card__content {
+.giftset__image img {
     width: 100%;
-  }
+    height: auto;
 }
 
-@media (max-width: 768px) {
-  .nav {
-    padding: 15px 0;
-  }
-  
-  .nav__list {
-    gap: 15px;
-  }
-  
-  .hero__title {
-    font-size: 3rem;
-  }
-  
-  .hero__subtitle {
-    font-size: 1.4rem;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  .coffee-features,
-  .products-grid,
-  .combo-cards {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer__content {
-    flex-direction: column;
-    gap: 15px;
+.giftset__title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 15px 0 10px;
+}
+
+.giftset__description {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+
+.giftset__price {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c5530;
+    margin-bottom: 20px;
+}
+
+/* Combo section */
+.combo {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.combo__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.combo-card {
     text-align: center;
-  }
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 480px) {
-  .hero__title {
-    font-size: 2.5rem;
-  }
-  
-  .section-title {
-    font-size: 1.8rem;
-  }
-  
-  .product-card__price,
-  .giftset-card__price,
-  .combo-card__price {
-    font-size: 1.8rem;
-  }
-  
-  .giftset-card__specs {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .product-card__actions,
-  .giftset-card__actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .btn {
+.combo-card img {
     width: 100%;
-  }
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.combo-card__title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Footer */
+.footer {
+    background-color: #2c5530;
+    color: white;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.footer__copyright {
+    text-align: center;
+}
+
+/* Адаптивность */
+@media (max-width: 1199px) {
+    .hero__container,
+    .giftset__container {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero__image {
+        order: -1;
+    }
+}
+
+@media (max-width: 991px) {
+    .features__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .products__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .nav__list {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .features__container {
+        grid-template-columns: 1fr;
+    }
+    
+    .products__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .combo__grid {
+        grid-template-columns: 1fr;
+    }
 }
