@@ -1,48 +1,207 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-  <title>Кофейня «Уют»</title>
-  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" >
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REVO Coffee — Кофейня премиум класса</title>
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <header>
-    <h1>Кофейня «Уют»</h1>
-    <nav>
-      <ul>
-        <li><a href="#menu">Меню</a></li>
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#contacts">Контакты</a></li>
-      </ul>
-    </nav>
+  <header class="header">
+    <div class="container">
+      <div class="header__logo">
+        <img src="assets/icons/logo.png" alt="REVO Coffee" class="header__logo-img">
+      </div>
+      <nav class="header__nav nav">
+        <ul class="nav__list">
+          <li class="nav__item nav__item--active"><a class="nav__link" href="#home">TRANG CHU</a></li>
+          <li class="nav__item"><a class="nav__link" href="#coffee">COFFEE</a></li>
+          <li class="nav__item"><a class="nav__link" href="#phin">PHIN</a></li>
+          <li class="nav__item"><a class="nav__link" href="#combo">COMBO</a></li>
+          <li class="nav__item"><a class="nav__link" href="#giftset">GIFTSET</a></li>
+          <li class="nav__item"><a class="nav__link" href="#contact">LIENHE</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section id="menu">
-      <h2>Наше меню</h2>
-      <ul>
-        <li>Эспрессо — 150 ₽</li>
-        <li>Капучино — 200 ₽</li>
-        <li>Латте с ванилью — 220 ₽</li>
-        <li>Флэт уайт — 230 ₽</li>
-      </ul>
-    </section>
-    <section id="about">
-      <h2>О нас</h2>
-      <p>Мы — маленькая кофейня в центре города, где царят тепло, аромат свежесваренного кофе и уютная атмосфера. Все напитки готовятся вручную из отборных зёрен.</p>
+  <main class="main">
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero__content">
+          <h1 class="hero__title">YOUR PERSONALIZED COFFEE</h1>
+          <div class="hero__subtitle">REVO COFFEE</div>
+        </div>
+      </div>
     </section>
 
-    <section id="contacts">
-      <h2>Контакты</h2>
-      <p>Адрес: г. Москва, ул. Ленина, д. 15</p>
-      <p>Телефон: +7 (999) 123-45-67</p>
-      <p>Режим работы: ежедневно с 8:00 до 20:00</p>
+    <section class="coffee-section" id="coffee">
+      <div class="container">
+        <h2 class="section-title">Your Personalized Coffee</h2>
+        <div class="coffee-features">
+          <div class="feature">
+            <div class="feature__icon">
+              <img src="assets/icons/coffee-machine.png" alt="Источник кофе">
+            </div>
+            <h3 class="feature__title">Nguon goc</h3>
+            <p class="feature__text">Nhung hat ca phe Arabica den tu ngun goc va chit lugng cao</p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">
+              <img src="assets/icons/coffee-shop.png" alt="Качество кофе">
+            </div>
+            <h3 class="feature__title">Chat luong</h3>
+            <p class="feature__text">lung mbt hat ca phe la ca mbt qua qua trinh raing xay ky</p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">
+              <img src="assets/icons/coffee-packs.png" alt="Виды кофейных зерен">
+            </div>
+            <h3 class="feature__title">Cac loai hat</h3>
+            <p class="feature__text">70% chat luong tách ca ph green bean</p>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">
+              <img src="assets/icons/coffee-maker.png" alt="Процесс приготовления">
+            </div>
+            <h3 class="feature__title">Pha che</h3>
+            <p class="feature__text">Nhung hat ca phe duoc let xsc Robusta dat chat luing theo nghe nhin ca phe</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section" id="products">
+      <div class="container">
+        <h2 class="section-title">Choose Your Favorite</h2>
+        <div class="products-grid">
+          <article class="product-card">
+            <img src="assets/img/coffee1.jpg" alt="REVO Morning" class="product-card__image">
+            <div class="product-card__content">
+              <h3 class="product-card__title">REVO Morning</h3>
+              <p class="product-card__desc">hu ngot， hudng hoz</p>
+              <div class="product-card__price">99.000</div>
+              <div class="product-card__actions">
+                <button class="btn btn--primary">MUA NGAY</button>
+                <button class="btn btn--secondary">CHI TIET</button>
+              </div>
+            </div>
+          </article>
+          
+          <article class="product-card">
+            <img src="assets/img/coffee2.jpg" alt="REVO Everyday" class="product-card__image">
+            <div class="product-card__content">
+              <h3 class="product-card__title">REVO Everyday</h3>
+              <p class="product-card__desc">can bing， hiu dang. vi chocolate</p>
+              <div class="product-card__price">85.000</div>
+              <div class="product-card__actions">
+                <button class="btn btn--primary">MUA NGAY</button>
+                <button class="btn btn--secondary">CHI TIET</button>
+              </div>
+            </div>
+          </article>
+          
+          <article class="product-card">
+            <img src="assets/img/coffee3.jpg" alt="REVO Origin" class="product-card__image">
+            <div class="product-card__content">
+              <h3 class="product-card__title">REVO Origin</h3>
+              <p class="product-card__desc">hau ngot， it dang， vi chua dau</p>
+              <div class="product-card__price">139.000</div>
+              <div class="product-card__actions">
+                <button class="btn btn--primary">MUA NGA</button>
+                <button class="btn btn--secondary">CHI TIET</button>
+              </div>
+            </div>
+          </article>
+          
+          <article class="product-card">
+            <img src="assets/img/coffee4.jpg" alt="REVO Dam Da" class="product-card__image">
+            <div class="product-card__content">
+              <h3 class="product-card__title">REVO Dam Da</h3>
+              <p class="product-card__desc">dim da， ding， truydn thong</p>
+              <div class="product-card__price">75.000</div>
+              <div class="product-card__actions">
+                <button class="btn btn--primary">MUANGAY</button>
+                <button class="btn btn--secondary">CHI TIE</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="giftset-section" id="giftset">
+      <div class="container">
+        <h2 class="section-title">Best Gift For Best Friend</h2>
+        <div class="giftset-card">
+          <img src="assets/img/giftset.jpg" alt="Giftset Ca phe phin Viet Nam" class="giftset-card__image">
+          <div class="giftset-card__content">
+            <div class="giftset-card__header">
+              <span class="giftset-card__badge">GIFTSET</span>
+              <div class="giftset-card__price">285.000</div>
+            </div>
+            <h3 class="giftset-card__title">Giftset "Ca phe phin Viet Nam"</h3>
+            <p class="giftset-card__text">Mon qua tuyt wai danh cho ngudi sanh ch phě. Hat ch phe ducc Revo c5n trong chon lua，rang xay theo cong nghe va b quyet hoc hoi tir nhng nghě nhán nái ting， cùng vdi tinh yeu， su dam me cua nguoi lam ca phe.. tao ra nhung tach d phe tinh thk chì danh rng cho ban.</p>
+            <div class="giftset-card__specs">
+              <div class="giftset-card__spec">
+                <span class="giftset-card__spec-label">Loai ha</span>
+                <span class="giftset-card__spec-value">Fine Robusta Blenc</span>
+              </div>
+              <div class="giftset-card__spec">
+                <span class="giftset-card__spec-label">Do cao</span>
+                <span class="giftset-card__spec-value">700-800m</span>
+              </div>
+            </div>
+            <div class="giftset-card__actions">
+              <button class="btn btn--primary btn--large">MUANGAY</button>
+              <button class="btn btn--secondary btn--large">CHI TIET</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="combo-section" id="combo">
+      <div class="container">
+        <h2 class="section-title">Your Personalized Coffee</h2>
+        <div class="combo-cards">
+          <div class="combo-card">
+            <img src="assets/img/combo.jpg" alt="COMBO PHIN PHE" class="combo-card__image">
+            <div class="combo-card__content">
+              <h3 class="combo-card__title">COMBO PHIN PHE</h3>
+              <div class="combo-card__number">1</div>
+              <div class="combo-card__price">revo</div>
+            </div>
+          </div>
+          <div class="combo-card">
+            <div class="combo-card__content">
+              <h3 class="combo-card__title">COMBO PHIN PHE</h3>
+              <div class="combo-card__number">2</div>
+              <div class="combo-card__price">revo</div>
+            </div>
+          </div>
+          <div class="combo-card">
+            <div class="combo-card__content">
+              <h3 class="combo-card__title">COMBO PHIN PHE</h3>
+              <div class="combo-card__number">Q</div>
+              <div class="combo-card__price">revo</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Кофейня «Уют». Все права защищены.</p>
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__logo">revo</div>
+        <div class="footer__copyright">
+          &copy; 2025 REVO Coffee. Все права защищены.
+        </div>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
