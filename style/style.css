@@ -1,17 +1,16 @@
+/* Базовые настройки */
 :root {
     --primary-color: #2c5530;
     --secondary-color: #e67e22;
     --text-color: #333;
     --light-bg: #f8f9fa;
     --white: #fff;
-    --dark-bg: #1a2a6c; /* Темно-синий цвет для header */
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
     --border-radius: 8px;
     --container-padding: 0 20px;
 }
 
-/* Сброс стилей */
 * {
     margin: 0;
     padding: 0;
@@ -20,6 +19,7 @@
 
 body {
     font-family: 'Nunito', sans-serif;
+    font-size: 17px; /* Минимальный размер по HIG */
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--white);
@@ -35,27 +35,27 @@ body {
 
 /* Header styles */
 .header {
-    background-color: var(--dark-bg);
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 15px 0;
-    position: relative;
-    z-index: 100;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.header__container {
+.header__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.header__logo img {
+.logo img {
     height: 40px;
 }
 
 /* Навигация */
-.header__nav {
+.nav {
     display: flex;
-    flex: 1;
-    justify-content: center;
 }
 
 .nav__list {
@@ -68,7 +68,7 @@ body {
 
 .nav__link {
     text-decoration: none;
-    color: var(--white);
+    color: var(--text-color);
     font-weight: 600;
     text-transform: uppercase;
     font-size: 14px;
@@ -78,12 +78,13 @@ body {
 }
 
 .nav__link:hover,
-.nav__link:focus {
-    color: var(--secondary-color);
+.nav__link:focus,
+.nav__link.active {
+    color: var(--primary-color);
 }
 
 .nav__link:focus {
-    outline: 2px solid var(--secondary-color);
+    outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
 
@@ -104,7 +105,6 @@ body {
 .cart-icon img {
     width: 24px;
     height: 24px;
-    filter: brightness(0) invert(1); /* Делаем иконку белой */
 }
 
 .cart-count {
@@ -122,39 +122,39 @@ body {
     font-size: 12px;
 }
 
-/* Мобильное меню */
+/* Гамбургер-меню */
 .menu-toggle {
     display: none;
-    cursor: pointer;
-    background: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 44px;
+    height: 44px;
+    background: transparent;
     border: none;
-    padding: 5px;
+    padding: 12px 10px;
+    cursor: pointer;
+    z-index: 1001;
 }
 
-.menu-toggle span {
-    display: block;
-    width: 25px;
+.menu-toggle__line {
+    width: 100%;
     height: 3px;
-    background-color: var(--white);
-    margin: 5px 0;
+    background: var(--text-color);
+    border-radius: 2px;
     transition: var(--transition);
 }
 
-.menu-toggle:focus {
-    outline: 2px solid var(--secondary-color);
-    outline-offset: 2px;
+/* Состояние открытого меню */
+.menu-toggle.active .menu-toggle__line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
 }
 
-.menu-toggle.active span:nth-child(1) {
-    transform: translateY(8px) rotate(-45deg);
-}
-
-.menu-toggle.active span:nth-child(2) {
+.menu-toggle.active .menu-toggle__line:nth-child(2) {
     opacity: 0;
 }
 
-.menu-toggle.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(45deg);
+.menu-toggle.active .menu-toggle__line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* Hero section */
@@ -320,6 +320,8 @@ body {
 /* Buttons */
 .btn {
     display: inline-block;
+    min-width: 44px;
+    min-height: 44px;
     padding: 8px 20px;
     border-radius: 4px;
     text-decoration: none;
@@ -328,6 +330,7 @@ body {
     transition: var(--transition);
     border: none;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn:focus {
@@ -397,6 +400,11 @@ body {
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 20px;
+}
+
+.giftset__actions {
+    display: flex;
+    gap: 10px;
 }
 
 /* Combo section */
@@ -493,136 +501,44 @@ body {
     font-size: 16px;
 }
 
+/* Кнопка "Наверх" */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: #1e3a22;
+    transform: scale(1.1);
+}
+
+.scroll-top:active {
+    transform: scale(0.95);
+}
+
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
-}
-
-/* Адаптивность (Desktop First) */
-@media (max-width: 1199px) {
-    .hero__container,
-    .giftset__container {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero__image {
-        order: -1;
-    }
-    
-    .hero__title {
-        font-size: 48px;
-        line-height: 60px;
-    }
-    
-    .hero__subtitle {
-        font-size: 26px;
-        line-height: 30px;
-    }
-}
-
-@media (max-width: 991px) {
-    .nav__list {
-        gap: 10px;
-    }
-    
-    .nav__link {
-        font-size: 13px;
-        padding: 6px 10px;
-    }
-    
-    .features__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .products__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .combo__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 767px) {
-    .menu-toggle {
-        display: block;
-    }
-    
-    .nav__list {
-        position: fixed;
-        top: 60px;
-        right: 0;
-        width: 280px;
-        background-color: var(--white);
-        flex-direction: column;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        padding: 20px 0;
-        transform: translateX(100%);
-        transition: var(--transition);
-        z-index: 99;
-    }
-    
-    .nav__list.active {
-        transform: translateX(0);
-    }
-    
-    .nav__item {
-        margin: 0 20px;
-    }
-    
-    .nav__link {
-        display: block;
-        text-align: center;
-        padding: 12px 0;
-        color: var(--text-color);
-    }
-    
-    .features__grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .products__grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .combo__grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero__title {
-        font-size: 36px;
-        line-height: 44px;
-    }
-    
-    .hero__subtitle {
-        font-size: 22px;
-        line-height: 26px;
-    }
-    
-    .section-title {
-        font-size: 22px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero__title {
-        font-size: 28px;
-        line-height: 36px;
-    }
-    
-    .hero__subtitle {
-        font-size: 18px;
-        line-height: 22px;
-    }
-    
-    .hero {
-        padding: 40px 0;
-    }
-    
-    .features,
-    .products,
-    .giftset,
-    .combo {
-        padding: 40px 0;
-    }
 }
