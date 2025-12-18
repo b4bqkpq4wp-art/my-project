@@ -11,7 +11,7 @@ body {
     color: #333;
     background-color: #fff;
     overflow-x: hidden;
-    font-size: 17px; /* Соответствует HIG */
+    font-size: 17px;
 }
 
 .container {
@@ -23,7 +23,7 @@ body {
 
 /* Header styles */
 .header {
-    background-color: #1a2a6c; /* Темно-синий цвет верхушки */
+    background-color: #1a2a6c;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 15px 0;
     position: sticky;
@@ -35,6 +35,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .header__logo img {
@@ -46,20 +47,19 @@ body {
     transform: scale(1.05);
 }
 
-/* Навигация */
+/* Навигация - десктопная версия */
 .header__nav {
-    display: flex;
     flex: 1;
+    display: flex;
     justify-content: center;
 }
 
 .nav__list {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     list-style: none;
     padding: 0;
     margin: 0;
-    flex-wrap: wrap;
 }
 
 .nav__link {
@@ -68,9 +68,8 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 17px;
-    transition: all 0.3s ease;
-    position: relative;
-    padding: 8px 12px;
+    transition: color 0.3s ease;
+    padding: 8px 0;
 }
 
 .nav__link:hover,
@@ -100,7 +99,7 @@ body {
 .cart-icon img {
     width: 24px;
     height: 24px;
-    filter: brightness(0) invert(1); /* Белая иконка на синем фоне */
+    filter: brightness(0) invert(1);
 }
 
 .cart-count {
@@ -121,80 +120,32 @@ body {
 /* Мобильное меню */
 .menu-toggle {
     display: none;
-    cursor: pointer;
-    background: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: transparent;
     border: none;
-    padding: 5px;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
 }
 
 .menu-toggle span {
     display: block;
-    width: 25px;
     height: 3px;
+    width: 100%;
     background-color: #fff;
-    margin: 5px 0;
-    transition: all 0.3s ease;
-}
-
-.menu-toggle:focus {
-    outline: 2px solid #e67e22;
-    outline-offset: 2px;
-}
-
-/* Активное состояние меню */
-.menu-toggle.active span:nth-child(1) {
-    transform: translateY(8px) rotate(-45deg);
-}
-
-.menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(45deg);
-}
-
-/* Скрытое меню на мобильных */
-.nav__list {
-    position: fixed;
-    top: 60px;
-    right: 0;
-    width: 280px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 15px 0;
-    display: none;
-    z-index: 100;
-    transition: all 0.3s ease;
-    transform: translateX(100%);
-}
-
-.nav__list.active {
-    display: flex;
-    flex-direction: column;
-    transform: translateX(0);
-}
-
-.nav__item {
-    margin: 0;
-}
-
-.nav__link {
-    display: block;
-    padding: 12px 20px;
-    transition: all 0.3s ease;
-    color: #333;
-}
-
-.nav__link:hover {
-    background-color: #f8f9fa;
-    color: #2c5530;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
 }
 
 /* Hero section */
 .hero {
     background-color: #f8f9fa;
-    padding: 60px 0;
+    padding: 80px 0;
 }
 
 .hero__container {
@@ -210,6 +161,7 @@ body {
     font-weight: 800;
     line-height: 70px;
     margin-bottom: 10px;
+    color: #1a2a6c;
 }
 
 .hero__subtitle {
@@ -227,20 +179,32 @@ body {
 
 /* Features section */
 .features {
-    padding: 60px 0;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
 }
 
 .features__container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-    justify-items: center;
+    justify-content: center;
 }
 
 .feature-card {
     text-align: center;
-    transition: transform 0.3s ease;
     max-width: 250px;
+    margin: 0 auto;
+    padding: 20px;
+    transition: transform 0.3s ease;
 }
 
 .feature-card:hover {
@@ -254,6 +218,7 @@ body {
 .feature-card__icon img {
     width: 60px;
     height: 60px;
+    margin: 0 auto;
 }
 
 .feature-card__title {
@@ -261,6 +226,7 @@ body {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 10px;
+    color: #1a2a6c;
 }
 
 .feature-card__text {
@@ -272,16 +238,80 @@ body {
 
 /* Products section */
 .products {
-    padding: 60px 0;
+    padding: 80px 0;
     background-color: #f8f9fa;
 }
 
-.section-title {
-    font-family: 'Nunito', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
+.products__container {
     text-align: center;
+}
+
+.section-subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c5530;
     margin-bottom: 40px;
+}
+
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    min-width: 120px;
+    text-align: center;
+}
+
+.btn--primary {
+    background-color: #2c5530;
+    color: white;
+}
+
+.btn--primary:hover {
+    background-color: #1e3a22;
+    transform: translateY(-2px);
+}
+
+.btn--secondary {
+    background-color: transparent;
+    color: #2c5530;
+    border: 1px solid #2c5530;
+}
+
+.btn--secondary:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+/* Giftset section */
+.giftset {
+    padding: 80px 0;
+}
+
+.giftset__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Combo section */
+.combo {
+    padding: 80px 0;
+    background-color: #f8f9fa;
 }
 
 .combo__subtitle {
@@ -293,213 +323,10 @@ body {
     color: #2c5530;
 }
 
-.products__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-}
-
-.product-card {
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.product-card__image img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.product-card__title {
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 15px 0 5px;
-    text-align: center;
-}
-
-.product-card__description {
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-style: italic;
-    text-align: center;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-.product-card__price {
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-    color: #2c5530;
-    margin-bottom: 15px;
-}
-
-.product-card__actions {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 0 20px 20px;
-}
-
-/* Buttons */
-.btn {
-    display: inline-block;
-    padding: 8px 20px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    min-width: 44px;
-    min-height: 44px;
-}
-
-.btn:focus {
-    outline: 2px solid #2c5530;
-    outline-offset: 2px;
-}
-
-.btn:active {
-    transform: translateY(1px);
-}
-
-.btn--primary {
-    background-color: #2c5530;
-    color: white;
-}
-
-.btn--primary:hover {
-    background-color: #1e3a22;
-}
-
-.btn--secondary {
-    background-color: transparent;
-    color: #2c5530;
-    border: 1px solid #2c5530;
-}
-
-.btn--secondary:hover {
-    background-color: #f0f0f0;
-}
-
-/* Giftset section */
-.giftset {
-    padding: 60px 0;
-}
-
-.giftset__container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.giftset__image img {
-    width: 100%;
-    height: auto;
-}
-
-.giftset__title {
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 15px 0 10px;
-}
-
-.giftset__description {
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    line-height: 20px;
-    margin-bottom: 20px;
-}
-
-.giftset__price {
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: #2c5530;
-    margin-bottom: 20px;
-}
-
-/* Combo section */
-.combo {
-    padding: 60px 0;
-    background-color: #f8f9fa;
-}
-
 .combo__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-}
-
-.combo-card {
-    text-align: center;
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.combo-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.combo-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
-
-.combo-card__title {
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 10px 0 5px;
-}
-
-.combo-card__description {
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    line-height: 20px;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.combo-card__price {
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: #2c5530;
-    margin-bottom: 5px;
-}
-
-.old-price {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 16px;
-    margin-left: 5px;
-}
-
-.combo-card__actions {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
 }
 
 /* Footer */
@@ -512,6 +339,8 @@ body {
 
 .footer__copyright {
     text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
 }
 
 /* Кнопка "Наверх" */
@@ -519,18 +348,19 @@ body {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 56px;
-    height: 56px;
+    width: 60px;
+    height: 60px;
     background: #2c5530;
     color: white;
     border: none;
     border-radius: 50%;
     font-size: 24px;
+    font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     z-index: 999;
     display: flex;
     align-items: center;
@@ -562,8 +392,12 @@ body {
         order: -1;
     }
     
-    .features__container {
-        grid-template-columns: repeat(2, 1fr);
+    .hero__title {
+        font-size: 48px;
+    }
+    
+    .hero__subtitle {
+        font-size: 26px;
     }
 }
 
@@ -575,28 +409,68 @@ body {
     .products__grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .combo__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 767px) {
-    .header__container {
-        padding: 10px 0;
-    }
-    
     .menu-toggle {
-        display: block;
-    }
-    
-    .header__cart {
-        display: none;
+        display: flex;
     }
     
     .nav__list {
+        position: fixed;
+        top: 60px;
+        right: -100%;
         width: 280px;
-        right: -280px;
+        height: calc(100vh - 60px);
+        background: #fff;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px 0;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 99;
     }
     
     .nav__list.active {
         right: 0;
+    }
+    
+    .nav__item {
+        margin: 0;
+    }
+    
+    .nav__link {
+        display: block;
+        text-align: center;
+        padding: 15px 20px;
+        color: #333;
+        font-size: 18px;
+    }
+    
+    .header__nav {
+        position: relative;
+        width: 100%;
+    }
+    
+    .header__cart {
+        display: block;
+        margin-left: 0;
+    }
+    
+    .features__container {
+        grid-template-columns: 1fr;
+    }
+    
+    .products__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .combo__grid {
+        grid-template-columns: 1fr;
     }
     
     .hero__title {
@@ -612,46 +486,6 @@ body {
     .section-title {
         font-size: 22px;
     }
-    
-    .features__container {
-        grid-template-columns: 1fr;
-    }
-    
-    .products__grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .combo__grid {
-        grid-template-columns: 1fr;
-    }
-    
-    /* Уменьшаем размер кнопки "Наверх" для мобильных */
-    .scroll-top {
-        width: 52px;
-        height: 52px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 22px;
-    }
-    
-    /* Увеличиваем touch-зоны для мобильных */
-    .btn {
-        min-width: 120px;
-        padding: 12px 24px;
-    }
-    
-    .product-card__actions,
-    .giftset__actions,
-    .combo-card__actions {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    /* Уменьшаем изображение в hero для мобильных */
-    .hero__image img {
-        max-height: 300px;
-        object-fit: cover;
-    }
 }
 
 @media (max-width: 480px) {
@@ -665,14 +499,11 @@ body {
         line-height: 22px;
     }
     
-    .hero {
-        padding: 40px 0;
-    }
-    
-    .features,
-    .products,
-    .giftset,
-    .combo {
-        padding: 40px 0;
+    .scroll-top {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        bottom: 20px;
+        right: 20px;
     }
 }
