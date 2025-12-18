@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollTopButton = document.getElementById('scrollTop');
     
     if (scrollTopButton) {
-        // Показываем кнопку после скролла
+        // Плавное появление кнопки
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 scrollTopButton.classList.add('visible');
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Прокрутка к началу страницы
+        // Плавная прокрутка к началу страницы
         scrollTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -56,4 +56,20 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Улучшенная анимация при наведении на товары
+    const productCards = document.querySelectorAll('.product-card, .combo-card');
+    productCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease';
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease';
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+        });
+    });
 });
