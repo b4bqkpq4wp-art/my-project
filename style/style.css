@@ -117,31 +117,6 @@ body {
     font-size: 12px;
 }
 
-/* Мобильное меню */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 30px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 10;
-}
-
-.menu-toggle span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 10px;
-    transition: all 0.3s linear;
-    position: relative;
-    transform-origin: 1px;
-}
-
 /* Hero section */
 .hero {
     background-color: #f8f9fa;
@@ -416,61 +391,12 @@ body {
 }
 
 @media (max-width: 767px) {
-    .menu-toggle {
-        display: flex;
-    }
-    
-    .nav__list {
-        position: fixed;
-        top: 60px;
-        right: -100%;
-        width: 280px;
-        height: calc(100vh - 60px);
-        background: #fff;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 20px 0;
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
-        z-index: 99;
-    }
-    
-    .nav__list.active {
-        right: 0;
-    }
-    
-    .nav__item {
-        margin: 0;
-    }
-    
-    .nav__link {
-        display: block;
-        text-align: center;
-        padding: 15px 20px;
-        color: #333;
-        font-size: 18px;
-    }
-    
-    .header__nav {
-        position: relative;
-        width: 100%;
+    .header__container {
+        padding: 10px 0;
     }
     
     .header__cart {
-        display: block;
-        margin-left: 0;
-    }
-    
-    .features__container {
-        grid-template-columns: 1fr;
-    }
-    
-    .products__grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .combo__grid {
-        grid-template-columns: 1fr;
+        display: none;
     }
     
     .hero__title {
@@ -486,6 +412,45 @@ body {
     .section-title {
         font-size: 22px;
     }
+    
+    .features__container {
+        grid-template-columns: 1fr;
+    }
+    
+    .products__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .combo__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .scroll-top {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    /* Увеличиваем touch-зоны для мобильных */
+    .btn {
+        min-width: 120px;
+        padding: 12px 24px;
+    }
+    
+    .product-card__actions,
+    .giftset__actions,
+    .combo-card__actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    /* Уменьшаем изображение в hero для мобильных */
+    .hero__image img {
+        max-height: 300px;
+        object-fit: cover;
+    }
 }
 
 @media (max-width: 480px) {
@@ -499,11 +464,14 @@ body {
         line-height: 22px;
     }
     
-    .scroll-top {
-        width: 50px;
-        height: 50px;
-        font-size: 22px;
-        bottom: 20px;
-        right: 20px;
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .features,
+    .products,
+    .giftset,
+    .combo {
+        padding: 40px 0;
     }
 }
