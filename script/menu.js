@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (menuToggle && sidebar && navOverlay) {
         // Открытие меню
         menuToggle.addEventListener('click', function() {
-            this.classList.add('active');
-            sidebar.classList.add('active');
-            navOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Блокируем скролл
+            this.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
         });
         
         // Закрытие меню через кнопку закрытия
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             menuToggle.classList.remove('active');
             sidebar.classList.remove('active');
             navOverlay.classList.remove('active');
-            document.body.style.overflow = ''; // Возвращаем скролл
+            document.body.style.overflow = '';
         }
     }
     
