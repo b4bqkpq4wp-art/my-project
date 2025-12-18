@@ -12,6 +12,7 @@ body {
     background-color: #fff;
     overflow-x: hidden;
     font-size: 17px;
+    position: relative;
 }
 
 .container {
@@ -451,6 +452,67 @@ body {
         max-height: 300px;
         object-fit: cover;
     }
+    
+    /* Мобильное меню */
+    .nav__list {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #fff;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px 0;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 99;
+        overflow-y: auto;
+    }
+    
+    .nav__list.active {
+        right: 0;
+    }
+    
+    .nav__item {
+        margin: 0;
+    }
+    
+    .nav__link {
+        display: block;
+        text-align: center;
+        padding: 15px 20px;
+        color: #333;
+        font-size: 18px;
+    }
+    
+    /* Уменьшаем размер шрифта в заголовках для мобильных */
+    .section-title {
+        font-size: 22px;
+    }
+    
+    .hero__title {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    
+    .hero__subtitle {
+        font-size: 20px;
+        line-height: 24px;
+    }
+    
+    /* Улучшаем отображение раздела COFFEE BUILD YOUR BASE */
+    .features__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature-card {
+        max-width: 100%;
+        width: 100%;
+        padding: 20px 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -473,5 +535,18 @@ body {
     .giftset,
     .combo {
         padding: 40px 0;
+    }
+    
+    /* Дополнительные стили для очень маленьких экранов */
+    .section-title {
+        font-size: 20px;
+    }
+    
+    .feature-card__title {
+        font-size: 22px;
+    }
+    
+    .feature-card__text {
+        font-size: 14px;
     }
 }
