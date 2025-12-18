@@ -2,259 +2,103 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REVO Coffee - Your Personalized Coffee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>REVO Coffee</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; overflow-x: hidden; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .header { background-color: #1a2a6c; padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 40px; }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+        .menu-toggle span { display: block; width: 25px; height: 3px; background: white; margin: 5px 0; }
+        .nav { display: flex; }
+        .nav-list { display: flex; list-style: none; gap: 15px; }
+        .nav-link { color: white; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 16px; }
+        .hero { padding: 60px 0; background: #f8f9fa; }
+        .hero-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .hero-title { font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 800; color: #1a2a6c; }
+        .hero-image img { width: 100%; height: auto; }
+        
+        @media (max-width: 767px) {
+            .menu-toggle { display: block; }
+            .nav { display: none; }
+            .hero-container { grid-template-columns: 1fr; }
+            .hero-image { order: -1; }
+            .hero-title { font-size: 32px; }
+        }
+    </style>
 </head>
 <body>
-    <header class="header" id="header">
-        <div class="header__container container">
-            <a href="#header" class="header__logo">
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
                 <img src="assets/icons/logo.png" alt="REVO Coffee">
             </a>
-            
-            <nav class="header__nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#header" class="nav__link">TRANG CHU</a></li>
-                    <li class="nav__item"><a href="#features" class="nav__link">COFFEE</a></li>
-                    <li class="nav__item"><a href="#products" class="nav__link">PHIN MA</a></li>
-                    <li class="nav__item"><a href="#combo" class="nav__link">MAL COMBO</a></li>
-                    <li class="nav__item"><a href="#combo" class="nav__link">PHINPHE</a></li>
-                    <li class="nav__item"><a href="#giftset" class="nav__link">GIFTSET</a></li>
-                    <li class="nav__item"><a href="#footer" class="nav__link">LIENHE</a></li>
-                    <li class="nav__item"><a href="#personalized" class="nav__link">YOUR PERSONALIZED</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header__cart">
-                <a href="#" class="cart-icon" aria-label="Shopping cart">
-                    <img src="assets/icons/coffee-cart.png" alt="Cart">
-                    <span class="cart-count">2</span>
-                </a>
-            </div>
-            
-            <!-- Гамбургер-меню для мобильных -->
-            <button class="menu-toggle" aria-label="Toggle menu">
+            <button class="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link">TRANG CHU</a></li>
+                    <li><a href="#" class="nav-link">COFFEE</a></li>
+                    <li><a href="#" class="nav-link">PHIN MA</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Сайдбар мобильного меню -->
-    <div class="sidebar">
-        <div class="sidebar__header">
-            <a href="#header" class="sidebar__logo">
-                <img src="assets/icons/logo.png" alt="REVO Coffee">
-            </a>
-            <button class="sidebar__close" aria-label="Close menu">
-                &times;
-            </button>
-        </div>
-        <nav class="sidebar__nav">
-            <ul class="sidebar__list">
-                <li class="sidebar__item"><a href="#header" class="sidebar__link active">TRANG CHU</a></li>
-                <li class="sidebar__item"><a href="#features" class="sidebar__link">COFFEE</a></li>
-                <li class="sidebar__item"><a href="#products" class="sidebar__link">PHIN MA</a></li>
-                <li class="sidebar__item"><a href="#combo" class="sidebar__link">MAL COMBO</a></li>
-                <li class="sidebar__item"><a href="#combo" class="sidebar__link">PHINPHE</a></li>
-                <li class="sidebar__item"><a href="#giftset" class="sidebar__link">GIFTSET</a></li>
-                <li class="sidebar__item"><a href="#footer" class="sidebar__link">LIENHE</a></li>
-                <li class="sidebar__item"><a href="#personalized" class="sidebar__link">YOUR PERSONALIZED</a></li>
-            </ul>
-        </nav>
-        <div class="sidebar__footer">
-            <p>&copy; 2023 REVO Coffee. All rights reserved.</p>
-        </div>
-    </div>
-
-    <!-- Overlay для затемнения фона -->
-    <div class="nav-overlay"></div>
-
-    <main class="main">
-        <section class="hero" id="hero">
-            <div class="hero__container container">
-                <div class="hero__content">
-                    <h1 class="hero__title">YOUR PERSONALIZED COFFEE</h1>
-                    <h2 class="hero__subtitle">Your Personalized Coffee</h2>
+    <main>
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">YOUR PERSONALIZED COFFEE</h1>
                 </div>
-                <div class="hero__image">
-                    <img src="assets/img/hero-bg.png" alt="Coffee products">
-                </div>
-            </div>
-        </section>
-
-        <section class="features" id="features">
-            <div class="container">
-                <h2 class="section-title">COFFEE BUILD YOUR BASE</h2>
-                <div class="features__container">
-                    <div class="feature-card">
-                        <div class="feature-card__icon">
-                            <img src="assets/icons/coffee-mountain.png" alt="Mountain">
-                        </div>
-                        <h3 class="feature-card__title">Nguon goc</h3>
-                        <p class="feature-card__text">Nhung hat ca phe Arabica den tu ngun goc va chit lugng cao</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-card__icon">
-                            <img src="assets/icons/coffee-seed.png" alt="Seed">
-                        </div>
-                        <h3 class="feature-card__title">Chat luong</h3>
-                        <p class="feature-card__text">lung mbt hat ca phe la ca mbt qua qua trinh raing xay ky</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-card__icon">
-                            <img src="assets/icons/coffee-shop.png" alt="Shop">
-                        </div>
-                        <h3 class="feature-card__title">Cac loai hat</h3>
-                        <p class="feature-card__text">70% chat luong tách ca ph green bean</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-card__icon">
-                            <img src="assets/icons/coffee-machine.png" alt="Machine">
-                        </div>
-                        <h3 class="feature-card__title">Pha che</h3>
-                        <p class="feature-card__text">Nhung hat ca phe duoc let xsc Robusta dat chat luing theo nghe nhin ca phe</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="products" id="products">
-            <div class="products__container container">
-                <h2 class="section-title">Choose Your Favorite</h2>
-                <h3 class="section-subtitle">CHUAN GU DUNG VI</h3>
-                <div class="products__grid">
-                    <article class="product-card">
-                        <div class="product-card__image">
-                            <img src="assets/img/coffee1.png" alt="REVO Morning">
-                        </div>
-                        <h3 class="product-card__title">REVO Morning</h3>
-                        <p class="product-card__description">hu ngot, hudng hoz</p>
-                        <div class="product-card__price">99.000</div>
-                        <div class="product-card__actions">
-                            <a href="#" class="btn btn--primary">MUA NGAY</a>
-                            <a href="#" class="btn btn--secondary">CHI TIET</a>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="product-card__image">
-                            <img src="assets/img/coffee2.png" alt="REVO Everyday">
-                        </div>
-                        <h3 class="product-card__title">REVO Everyday</h3>
-                        <p class="product-card__description">can bing, hiu dang, vi chocolate</p>
-                        <div class="product-card__price">85.000</div>
-                        <div class="product-card__actions">
-                            <a href="#" class="btn btn--primary">MUA NGAY</a>
-                            <a href="#" class="btn btn--secondary">CHI TIET</a>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="product-card__image">
-                            <img src="assets/img/coffee3.png" alt="REVO Origin">
-                        </div>
-                        <h3 class="product-card__title">REVO Origin</h3>
-                        <p class="product-card__description">hau ngot, it dang, vi chua dau</p>
-                        <div class="product-card__price">139.000</div>
-                        <div class="product-card__actions">
-                            <a href="#" class="btn btn--primary">MUA NGAY</a>
-                            <a href="#" class="btn btn--secondary">CHI TIET</a>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="product-card__image">
-                            <img src="assets/img/coffee4.png" alt="REVO Dam Da">
-                        </div>
-                        <h3 class="product-card__title">REVO Dam Da</h3>
-                        <p class="product-card__description">dim da, ding, truydn thong</p>
-                        <div class="product-card__price">75.000</div>
-                        <div class="product-card__actions">
-                            <a href="#" class="btn btn--primary">MUA NGAY</a>
-                            <a href="#" class="btn btn--secondary">CHI TIET</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="giftset" id="giftset">
-            <div class="giftset__container container">
-                <div class="giftset__image">
-                    <img src="assets/img/giftset.png" alt="Giftset">
-                </div>
-                <div class="giftset__content">
-                    <h2 class="section-title">Best Gift For Best Friend</h2>
-                    <h3 class="giftset__title">Giftset "Ca phe phin Viet Nam"</h3>
-                    <p class="giftset__description">Mon qua tuyt wai danh cho ngudi sanh ch phě. Hat ch phe ducc Revo c5n trong chon lua, rang xay theo cong nghe va b quyet hoc hoi tir nhng nghě nhán nái ting, cùng vdi tinh yeu, su dam me cua nguoi lam ca phe.. tao ra nhung tach d phe tinh thk chì danh rng cho ban.</p>
-                    <div class="giftset__price">285.000</div>
-                    <div class="giftset__actions">
-                        <a href="#" class="btn btn--primary">MUA NGAY</a>
-                        <a href="#" class="btn btn--secondary">CHI TIET</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="combo" id="combo">
-            <div class="combo__container container">
-                <h2 class="section-title">Your Personalized Coffee</h2>
-                <h3 class="combo__subtitle">COMBO PHIN PHE</h3>
-                <div class="combo__grid">
-                    <article class="combo-card">
-                        <img src="assets/img/combo.png" alt="Combo">
-                        <div class="combo-card__info">
-                            <div class="combo-card__price">147.000 <span class="old-price">155.000</span></div>
-                            <h3 class="combo-card__title">Combo Revo Dam Da</h3>
-                            <p class="combo-card__description">Hàm lượng caffeine trong Revo Dam Da đủ mạnh để làm bạn tỉnh táo làm việc...</p>
-                            <div class="combo-card__actions">
-                                <a href="#" class="btn btn--primary">MUA NGAY</a>
-                                <a href="#" class="btn btn--secondary">CHI TIET</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="combo-card">
-                        <img src="assets/img/combo1.png" alt="Combo 1">
-                        <div class="combo-card__info">
-                            <div class="combo-card__price">156.000 <span class="old-price">165.000</span></div>
-                            <h3 class="combo-card__title">Combo Revo Everyday</h3>
-                            <p class="combo-card__description">Revo Everyday được phối trộn giữa vị đắng của hạt Robusta và hương thơm...</p>
-                            <div class="combo-card__actions">
-                                <a href="#" class="btn btn--primary">MUA NGAY</a>
-                                <a href="#" class="btn btn--secondary">CHI TIET</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="combo-card">
-                        <img src="assets/img/combo2.png" alt="Combo 2">
-                        <div class="combo-card__info">
-                            <div class="combo-card__price">275.000 <span class="old-price">260.000</span></div>
-                            <h3 class="combo-card__title">Combo Revo Honey</h3>
-                            <p class="combo-card__description">Honey – trong tên gọi Revo Honey đến từ phương pháp chế biến hạt Arabica...</p>
-                            <div class="combo-card__actions">
-                                <a href="#" class="btn btn--primary">MUA NGAY</a>
-                                <a href="#" class="btn btn--secondary">CHI TIET</a>
-                            </div>
-                        </div>
-                    </article>
+                <div class="hero-image">
+                    <img src="assets/img/hero-bg.png" alt="Coffee">
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer" id="footer">
-        <div class="footer__container container">
-            <p class="footer__copyright">&copy; 2023 REVO Coffee. All rights reserved.</p>
-        </div>
-    </footer>
-    
-    <!-- Кнопка "Наверх" -->
-    <button class="scroll-top" id="scrollTop" aria-label="Наверх">
-        ↑
-    </button>
-    
-    <script src="script/menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    alert('Меню работает! Это тестовое сообщение.');
+                });
+            }
+            
+            // Кнопка "Наверх"
+            const scrollTopBtn = document.createElement('button');
+            scrollTopBtn.innerHTML = '↑';
+            scrollTopBtn.style.position = 'fixed';
+            scrollTopBtn.style.bottom = '20px';
+            scrollTopBtn.style.right = '20px';
+            scrollTopBtn.style.width = '50px';
+            scrollTopBtn.style.height = '50px';
+            scrollTopBtn.style.backgroundColor = '#2c5530';
+            scrollTopBtn.style.color = 'white';
+            scrollTopBtn.style.border = 'none';
+            scrollTopBtn.style.borderRadius = '50%';
+            scrollTopBtn.style.cursor = 'pointer';
+            scrollTopBtn.style.display = 'none';
+            document.body.appendChild(scrollTopBtn);
+            
+            window.addEventListener('scroll', function() {
+                scrollTopBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+            });
+            
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
