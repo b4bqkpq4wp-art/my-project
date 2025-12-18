@@ -8,6 +8,16 @@
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
     --border-radius: 8px;
+    --container-pad/* Базовые настройки */
+:root {
+    --primary-color: #2c5530;
+    --secondary-color: #e67e22;
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+    --white: #fff;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 8px;
     --container-padding: 0 20px;
 }
 
