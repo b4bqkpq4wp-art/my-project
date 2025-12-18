@@ -1,93 +1,59 @@
-// Получаем элементы
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
-
-// Создаем оверлей для меню
-const navOverlay = document.createElement('div');
-navOverlay.className = 'nav-overlay';
-document.body.appendChild(navOverlay);
-
-// Функция открытия/закрытия меню
-function toggleMenu() {
-    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+document.addEventListener('DOMContentLoaded', function() {
+    // Мобильное меню
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav__list');
     
-    // Переключаем состояния
-    menuToggle.classList.toggle('active');
-    menuToggle.setAttribute('aria-expanded', !isExpanded);
-    mainNav.classList.toggle('active');
-    navOverlay.classList.toggle('active');
+    if (menuToggle && navList) {
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+        
+        // Закрыть меню при клике на ссылку
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navList.classList.remove('active');
+            });
+        });
+        
+        // Закрыть меню при клике вне его области
+        document.addEventListener('click', function(event) {
+            if (!navList.contains(event.target) && !menuToggle.contains(event.target)) {
+                menuToggle.classList.remove('active');
+                navList.classList.remove('active');
+            }
+        });
+        
+        // Закрыть меню при изменении размера экрана
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 767) {
+                menuToggle.classList.remove('active');
+                navList.classList.remove('active');
+            }
+        });
+    }
     
-    // Блокируем скролл при открытом меню
-    document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
-}
-
-// Обработчики событий
-menuToggle.addEventListener('click', toggleMenu);
-navOverlay.addEventListener('click', toggleMenu);
-
-// Закрытие меню при клике на ссылку
-const navLinks = document.querySelectorAll('.nav__link');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-            toggleMenu();
-        }
-    });
-});
-
-// Закрытие меню при нажатии Escape
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mainNav.classList.contains('active')) {
-        toggleMenu();
-    }
-});
-
-// Закрытие меню при изменении размера окна (если перешли на десктоп)
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && mainNav.classList.contains('active')) {
-        toggleMenu();
-    }
-});
-
-// Кнопка "Наверх"
-const scrollTopButton = document.getElementById('scrollTop');
-
-// Показываем кнопку после скролла
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollTopButton.classList.add('visible');
-    } else {
-        scrollTopButton.classList.remove('visible');
-    }
-});
-
-// Прокрутка к началу страницы
-scrollTopButton.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Плавная прокрутка для якорных ссылок
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
+    // Кнопка "Наверх"
+    const scrollTopButton = document.getElementById('scrollTop');
+    
+    if (scrollTopButton) {
+        // Показываем кнопку после скролла
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopButton.classList.add('visible');
+            } else {
+                scrollTopButton.classList.remove('visible');
+            }
+        });
         
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
+        // Прокрутка к началу страницы
+        scrollTopButton.addEventListener('click', () => {
             window.scrollTo({
-                top: targetElement.offsetTop - 20,
+                top: 0,
                 behavior: 'smooth'
             });
-            
-            // Закрываем меню после клика на ссылку на мобильных
-            if (window.innerWidth <= 768 && mainNav.classList.contains('active')) {
-                toggleMenu();
-            }
-        }
-    });
+        });
+    }
 });
