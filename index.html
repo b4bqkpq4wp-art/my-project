@@ -3,46 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REVO Coffee - Your Personalized Coffee</title>
-    <!-- Подключение Google Fonts -->
+    <title>REVO Coffee - Mobile Interface</title>
+    <!-- Подключение шрифтов -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/style.css">
+    <!-- Основные стили -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- Мобильные стили -->
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)">
+    <!-- Фавиконка -->
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
 </head>
 <body>
-    <header class="header" id="header">
-        <div class="header__container container">
-            <a href="#header" class="header__logo">
-                <img src="assets/icons/logo.png" alt="REVO Coffee">
-            </a>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav class="header__nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#header" class="nav__link">TRANG CHU</a></li>
-                    <li class="nav__item"><a href="#features" class="nav__link">COFFEE</a></li>
-                    <li class="nav__item"><a href="#products" class="nav__link">PHIN MA</a></li>
-                    <li class="nav__item"><a href="#combo" class="nav__link">MAL COMBO</a></li>
-                    <li class="nav__item"><a href="#combo" class="nav__link">PHINPHE</a></li>
-                    <li class="nav__item"><a href="#giftset" class="nav__link">GIFTSET</a></li>
-                    <li class="nav__item"><a href="#footer" class="nav__link">LIENHE</a></li>
-                    <li class="nav__item"><a href="#personalized" class="nav__link">YOUR PERSONALIZED</a></li>
-                </ul>
-            </nav>
-            <div class="header__cart">
-                <a href="#" class="cart-icon" aria-label="Shopping cart">
-                    <img src="assets/icons/coffee-cart.png" alt="Cart">
-                    <span class="cart-count">2</span>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="#" class="logo">
+                    <img src="assets/icons/logo.png" alt="REVO Coffee" width="120" height="40">
                 </a>
+                
+                <!-- Гамбургер-кнопка -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
+                    <span class="menu-toggle__line"></span>
+                    <span class="menu-toggle__line"></span>
+                    <span class="menu-toggle__line"></span>
+                </button>
+                
+                <!-- Основная навигация -->
+                <nav class="nav" id="mainNav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#" class="nav__link active">TRANG CHU</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">COFFEE</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">PHIN MA</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">MAL COMBO</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">PHINPHE</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">GIFTSET</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">LIENHE</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">YOUR PERSONALIZED</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Иконка корзины -->
+                <div class="header__cart">
+                    <a href="#" class="cart-icon" aria-label="Shopping cart">
+                        <img src="assets/icons/coffee-cart.png" alt="Cart">
+                        <span class="cart-count">2</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
     <main class="main">
-        <section class="hero" id="hero">
+        <section class="hero">
             <div class="hero__container container">
                 <div class="hero__content">
                     <h1 class="hero__title">YOUR PERSONALIZED COFFEE</h1>
@@ -54,27 +82,27 @@
             </div>
         </section>
 
-        <section class="features" id="features">
+        <section class="features">
             <div class="features__container container">
                 <h2 class="section-title">COFFEE BUILD YOUR BASE</h2>
                 <div class="features__grid">
                     <div class="feature-card">
                         <div class="feature-card__icon">
-                            <img src="assets/icons/coffee-shop.png" alt="Shop">
+                            <img src="assets/icons/coffee-mountain.png" alt="Mountain">
                         </div>
                         <h3 class="feature-card__title">Nguon goc</h3>
                         <p class="feature-card__text">Nhung hat ca phe Arabica den tu ngun goc va chit lugng cao</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-card__icon">
-                            <img src="assets/icons/coffee-tablet.png" alt="Tablet">
+                            <img src="assets/icons/coffee-seed.png" alt="Seed">
                         </div>
                         <h3 class="feature-card__title">Chat luong</h3>
                         <p class="feature-card__text">lung mbt hat ca phe la ca mbt qua qua trinh raing xay ky</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-card__icon">
-                            <img src="assets/icons/coffee-packes.png" alt="Packes">
+                            <img src="assets/icons/coffee-shop.png" alt="Shop">
                         </div>
                         <h3 class="feature-card__title">Cac loai hat</h3>
                         <p class="feature-card__text">70% chat luong tách ca ph green bean</p>
@@ -90,7 +118,7 @@
             </div>
         </section>
 
-        <section class="products" id="products">
+        <section class="products">
             <div class="products__container container">
                 <h2 class="section-title">Choose Your Favorite</h2>
                 <h3 class="section-subtitle">CHUAN GU DUNG VI</h3>
@@ -147,7 +175,7 @@
             </div>
         </section>
 
-        <section class="giftset" id="giftset">
+        <section class="giftset">
             <div class="giftset__container container">
                 <div class="giftset__image">
                     <img src="assets/img/giftset.png" alt="Giftset">
@@ -165,7 +193,7 @@
             </div>
         </section>
 
-        <section class="combo" id="combo">
+        <section class="combo">
             <div class="combo__container container">
                 <h2 class="section-title">Your Personalized Coffee</h2>
                 <h3 class="combo__subtitle">COMBO PHIN PHE</h3>
@@ -211,11 +239,18 @@
         </section>
     </main>
 
-    <footer class="footer" id="footer">
+    <footer class="footer">
         <div class="footer__container container">
-            <p class="footer__copyright">&copy; 2025 REVO Coffee. All rights reserved.</p>
+            <p class="footer__copyright">&copy; 2023 REVO Coffee. All rights reserved.</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    
+    <!-- Кнопка "Наверх" -->
+    <button class="scroll-top" id="scrollTop" aria-label="Наверх">
+        ↑
+    </button>
+
+    <!-- Подключение JavaScript -->
+    <script src="scripts/menu.js"></script>
 </body>
 </html>
