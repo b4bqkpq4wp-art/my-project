@@ -44,14 +44,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollTopButton = document.getElementById('scrollTop');
     
     if (scrollTopButton) {
+        // Показываем кнопку после скролла
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
+            if (window.scrollY > 300) {
                 scrollTopButton.classList.add('visible');
             } else {
                 scrollTopButton.classList.remove('visible');
             }
         });
         
+        // Прокрутка к началу страницы
         scrollTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
