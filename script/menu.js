@@ -1,43 +1,54 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Мобильное меню
     const menuToggle = document.querySelector('.menu-toggle');
-    const navList = document.querySelector('.nav__list');
+    const sidebar = document.querySelector('.sidebar');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const sidebarClose = document.querySelector('.sidebar__close');
     
-    if (menuToggle && navList) {
+    if (menuToggle && sidebar && navOverlay) {
+        // Открытие меню
         menuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navList.classList.toggle('active');
+            this.classList.add('active');
+            sidebar.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Блокируем скролл
         });
         
-        // Закрыть меню при клике на ссылку
-        const navLinks = document.querySelectorAll('.nav__link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 767) {
-                    menuToggle.classList.remove('active');
-                    navList.classList.remove('active');
-                }
-            });
-        });
+        // Закрытие меню через кнопку закрытия
+        if (sidebarClose) {
+            sidebarClose.addEventListener('click', closeMenu);
+        }
         
-        // Закрыть меню при клике вне его области
-        document.addEventListener('click', function(event) {
-            if (!navList.contains(event.target) && 
-                !menuToggle.contains(event.target) && 
-                !event.target.closest('.header__logo') && 
-                window.innerWidth <= 767) {
-                menuToggle.classList.remove('active');
-                navList.classList.remove('active');
+        // Закрытие меню при клике на overlay
+        navOverlay.addEventListener('click', closeMenu);
+        
+        // Закрытие меню при нажатии Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+                closeMenu();
             }
         });
         
-        // Закрыть меню при изменении размера экрана
+        // Закрытие меню при клике на ссылку
+        const sidebarLinks = document.querySelectorAll('.sidebar__link');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        
+        // Закрытие меню при изменении размера экрана
         window.addEventListener('resize', function() {
-            if (window.innerWidth > 767) {
-                menuToggle.classList.remove('active');
-                navList.classList.remove('active');
+            if (window.innerWidth > 767 && sidebar.classList.contains('active')) {
+                closeMenu();
             }
         });
+        
+        // Функция закрытия меню
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            sidebar.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Возвращаем скролл
+        }
     }
     
     // Кнопка "Наверх"
