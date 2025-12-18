@@ -30,6 +30,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 navList.classList.remove('active');
             }
         });
+        
+        // Закрыть меню при изменении размера экрана
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 767) {
+                menuToggle.classList.remove('active');
+                navList.classList.remove('active');
+            }
+        });
     }
     
     // Кнопка "Наверх"
@@ -51,4 +59,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Анимация при наведении на изображения
+    const images = document.querySelectorAll('.product-card__image img, .combo-card img, .giftset__image img, .hero__image img');
+    
+    images.forEach(img => {
+        img.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        img.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
 });
