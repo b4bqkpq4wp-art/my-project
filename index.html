@@ -10,30 +10,30 @@
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <div class="header__container container">
-            <a href="#" class="header__logo">
+            <a href="#header" class="header__logo">
                 <img src="assets/icons/logo.png" alt="REVO Coffee">
             </a>
-            <button class="menu-toggle">
+            <button class="menu-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <nav class="header__nav">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#" class="nav__link">TRANG CHU</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">COFFEE</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">PHIN MA</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">MAL COMBO</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">PHINPHE</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">GIFTSET</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">LIENHE</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">YOUR PERSONALIZED</a></li>
+                    <li class="nav__item"><a href="#header" class="nav__link">TRANG CHU</a></li>
+                    <li class="nav__item"><a href="#features" class="nav__link">COFFEE</a></li>
+                    <li class="nav__item"><a href="#products" class="nav__link">PHIN MA</a></li>
+                    <li class="nav__item"><a href="#combo" class="nav__link">MAL COMBO</a></li>
+                    <li class="nav__item"><a href="#combo" class="nav__link">PHINPHE</a></li>
+                    <li class="nav__item"><a href="#giftset" class="nav__link">GIFTSET</a></li>
+                    <li class="nav__item"><a href="#footer" class="nav__link">LIENHE</a></li>
+                    <li class="nav__item"><a href="#personalized" class="nav__link">YOUR PERSONALIZED</a></li>
                 </ul>
             </nav>
             <div class="header__cart">
-                <a href="#" class="cart-icon">
+                <a href="#" class="cart-icon" aria-label="Shopping cart">
                     <img src="assets/icons/coffee-cart.png" alt="Cart">
                     <span class="cart-count">2</span>
                 </a>
@@ -42,7 +42,7 @@
     </header>
 
     <main class="main">
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero__container container">
                 <div class="hero__content">
                     <h1 class="hero__title">YOUR PERSONALIZED COFFEE</h1>
@@ -54,42 +54,46 @@
             </div>
         </section>
 
-        <section class="features">
+        <section class="features" id="features">
             <div class="features__container container">
-                <div class="feature-card">
-                    <div class="feature-card__icon">
-                        <img src="assets/icons/coffee-mountain.png" alt="Mountain">
+                <h2 class="section-title">COFFEE BUILD YOUR BASE</h2>
+                <div class="features__grid">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <img src="assets/icons/coffee-mountain.png" alt="Mountain">
+                        </div>
+                        <h3 class="feature-card__title">Nguon goc</h3>
+                        <p class="feature-card__text">Nhung hat ca phe Arabica den tu ngun goc va chit lugng cao</p>
                     </div>
-                    <h3 class="feature-card__title">Nguon goc</h3>
-                    <p class="feature-card__text">Nhung hat ca phe Arabica den tu ngun goc va chit lugng cao</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">
-                        <img src="assets/icons/coffee-seed.png" alt="Seed">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <img src="assets/icons/coffee-seed.png" alt="Seed">
+                        </div>
+                        <h3 class="feature-card__title">Chat luong</h3>
+                        <p class="feature-card__text">lung mbt hat ca phe la ca mbt qua qua trinh raing xay ky</p>
                     </div>
-                    <h3 class="feature-card__title">Chat luong</h3>
-                    <p class="feature-card__text">lung mbt hat ca phe la ca mbt qua qua trinh raing xay ky</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">
-                        <img src="assets/icons/coffee-shop.png" alt="Shop">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <img src="assets/icons/coffee-shop.png" alt="Shop">
+                        </div>
+                        <h3 class="feature-card__title">Cac loai hat</h3>
+                        <p class="feature-card__text">70% chat luong tách ca ph green bean</p>
                     </div>
-                    <h3 class="feature-card__title">Cac loai hat</h3>
-                    <p class="feature-card__text">70% chat luong tách ca ph green bean</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">
-                        <img src="assets/icons/coffee-machine.png" alt="Machine">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <img src="assets/icons/coffee-machine.png" alt="Machine">
+                        </div>
+                        <h3 class="feature-card__title">Pha che</h3>
+                        <p class="feature-card__text">Nhung hat ca phe duoc let xsc Robusta dat chat luing theo nghe nhin ca phe</p>
                     </div>
-                    <h3 class="feature-card__title">Pha che</h3>
-                    <p class="feature-card__text">Nhung hat ca phe duoc let xsc Robusta dat chat luing theo nghe nhin ca phe</p>
                 </div>
             </div>
         </section>
 
-        <section class="products">
+        <section class="products" id="products">
             <div class="products__container container">
                 <h2 class="section-title">Choose Your Favorite</h2>
+                <h3 class="section-subtitle">CHUAN GU DUNG VI</h3>
                 <div class="products__grid">
                     <article class="product-card">
                         <div class="product-card__image">
@@ -108,7 +112,7 @@
                             <img src="assets/img/coffee2.png" alt="REVO Everyday">
                         </div>
                         <h3 class="product-card__title">REVO Everyday</h3>
-                        <p class="product-card__description">can bing, hiu dang. vi chocolate</p>
+                        <p class="product-card__description">can bing, hiu dang, vi chocolate</p>
                         <div class="product-card__price">85.000</div>
                         <div class="product-card__actions">
                             <a href="#" class="btn btn--primary">MUA NGAY</a>
@@ -143,7 +147,7 @@
             </div>
         </section>
 
-        <section class="giftset">
+        <section class="giftset" id="giftset">
             <div class="giftset__container container">
                 <div class="giftset__image">
                     <img src="assets/img/giftset.png" alt="Giftset">
@@ -161,7 +165,7 @@
             </div>
         </section>
 
-        <section class="combo">
+        <section class="combo" id="combo">
             <div class="combo__container container">
                 <h2 class="section-title">Your Personalized Coffee</h2>
                 <h3 class="combo__subtitle">COMBO PHIN PHE</h3>
@@ -205,9 +209,41 @@
                 </div>
             </div>
         </section>
+
+        <section class="masonry" id="masonry">
+            <div class="masonry__container container">
+                <h2 class="section-title">Masonry Layout</h2>
+                <div class="masonry__grid">
+                    <div class="masonry__item masonry__item--tall">
+                        <h3 class="masonry__title">Tall Item</h3>
+                        <p class="masonry__text">Этот элемент занимает больше места по высоте, чем другие элементы в Masonry-сетке. Такая сетка позволяет создавать интересные композиции с элементами разной высоты.</p>
+                    </div>
+                    <div class="masonry__item">
+                        <h3 class="masonry__title">Regular Item</h3>
+                        <p class="masonry__text">Стандартный элемент в Masonry-сетке, занимающий базовую высоту. Сетка автоматически заполняет доступное пространство.</p>
+                    </div>
+                    <div class="masonry__item">
+                        <h3 class="masonry__title">Regular Item</h3>
+                        <p class="masonry__text">Еще один стандартный элемент в нашей Masonry-сетке. Такая компоновка очень популярна в современных дизайнах.</p>
+                    </div>
+                    <div class="masonry__item masonry__item--short">
+                        <h3 class="masonry__title">Short Item</h3>
+                        <p class="masonry__text">Короткий элемент с минимальной высотой.</p>
+                    </div>
+                    <div class="masonry__item">
+                        <h3 class="masonry__title">Regular Item</h3>
+                        <p class="masonry__text">Элемент с базовой высотой. Masonry-сетка отлично подходит для отображения контента разного объема.</p>
+                    </div>
+                    <div class="masonry__item masonry__item--tall">
+                        <h3 class="masonry__title">Tall Item</h3>
+                        <p class="masonry__text">Еще один высокий элемент в нашей Masonry-сетке. Сетка автоматически перестраивается при изменении размера окна для оптимального использования пространства.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="footer">
         <div class="footer__container container">
             <p class="footer__copyright">&copy; 2023 REVO Coffee. All rights reserved.</p>
         </div>
