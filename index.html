@@ -5,812 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REVO Coffee - Your Personalized Coffee</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
-    <style>
-        /* Все стили прямо в HTML для гарантированной работы */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #2c5530;
-            --secondary-color: #1a2a6c;
-            --text-color: #333;
-            --transition: all 0.3s ease;
-        }
-
-        body {
-            font-family: 'Nunito', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: #fff;
-            overflow-x: hidden;
-            font-size: 17px;
-            position: relative;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header {
-            background-color: var(--secondary-color);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header__container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .header__logo img {
-            height: 40px;
-            transition: var(--transition);
-        }
-
-        .header__logo img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Навигация - десктопная версия */
-        .header__nav {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .nav__list {
-            display: flex;
-            gap: 15px;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .nav__link {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 14px;
-            transition: var(--transition);
-            padding: 8px 5px;
-            text-align: center;
-        }
-
-        .nav__link:hover,
-        .nav__link:focus {
-            color: #e67e22;
-        }
-
-        .nav__link:focus {
-            outline: 2px solid #e67e22;
-            outline-offset: 2px;
-        }
-
-        .nav__link:active {
-            transform: translateY(1px);
-        }
-
-        /* Корзина */
-        .header__cart {
-            margin-left: 20px;
-        }
-
-        .cart-icon {
-            position: relative;
-            display: inline-block;
-        }
-
-        .cart-icon img {
-            width: 24px;
-            height: 24px;
-            filter: brightness(0) invert(1);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: #e67e22;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
-        /* Гамбургер-меню для мобильных */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 24px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 100;
-        }
-
-        .menu-toggle span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: #fff;
-            border-radius: 3px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        /* Анимация гамбургера при открытии */
-        .menu-toggle.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
-        }
-
-        /* Мобильное меню */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            height: 100vh;
-            width: 300px;
-            background-color: var(--primary-color);
-            transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-            z-index: 999;
-            padding: 80px 20px 20px;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu__close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-        }
-
-        .mobile-menu__list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .mobile-menu__item {
-            margin-bottom: 5px;
-        }
-
-        .mobile-menu__link {
-            display: block;
-            color: white;
-            text-decoration: none;
-            font-family: 'Nunito', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            padding: 12px 15px;
-            border-radius: 4px;
-            transition: var(--transition);
-        }
-
-        .mobile-menu__link:hover,
-        .mobile-menu__link.active {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #e67e22;
-        }
-
-        .nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            z-index: 998;
-        }
-
-        .nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Hero section */
-        .hero {
-            background-color: #f8f9fa;
-            padding: 80px 0;
-        }
-
-        .hero__container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero__title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 54px;
-            font-weight: 800;
-            line-height: 70px;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-        }
-
-        .hero__subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 30px;
-            font-weight: 800;
-            line-height: 34px;
-            color: var(--primary-color);
-        }
-
-        .hero__image img {
-            width: 100%;
-            height: auto;
-        }
-
-        /* Features section */
-        .features {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .section-title {
-            font-family: 'Nunito', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #333;
-        }
-
-        .features__container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .feature-card {
-            text-align: center;
-            max-width: 250px;
-            margin: 0 auto;
-            padding: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-card__icon {
-            margin-bottom: 20px;
-        }
-
-        .feature-card__icon img {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto;
-        }
-
-        .feature-card__title {
-            font-family: 'Nunito', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-        }
-
-        .feature-card__text {
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-            line-height: 20px;
-            color: #666;
-        }
-
-        /* Products section */
-        .products {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-        }
-
-        .products__container {
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-family: 'Nunito', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 40px;
-        }
-
-        .products__grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
-
-        .product-card__image {
-            margin-bottom: 15px;
-        }
-
-        .product-card__image img {
-            width: 100%;
-            height: auto;
-            max-height: 150px;
-            object-fit: contain;
-        }
-
-        .product-card__title {
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 18px;
-        }
-
-        .product-card__description {
-            color: #666;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .product-card__price {
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-
-        .product-card__actions {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 700;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            min-width: 120px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .btn--primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn--primary:hover {
-            background-color: #1e3a22;
-            transform: translateY(-2px);
-        }
-
-        .btn--secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-
-        .btn--secondary:hover {
-            background-color: #f0f0f0;
-            transform: translateY(-2px);
-        }
-
-        /* Giftset section */
-        .giftset {
-            padding: 80px 0;
-        }
-
-        .giftset__container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .giftset__image img {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            margin: 0 auto;
-        }
-
-        .giftset__title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 28px;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-        }
-
-        .giftset__description {
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .giftset__price {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 32px;
-            color: var(--primary-color);
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .giftset__actions {
-            display: flex;
-            gap: 15px;
-        }
-
-        /* Combo section */
-        .combo {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-        }
-
-        .combo__subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 30px;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--primary-color);
-        }
-
-        .combo__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .combo-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .combo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
-
-        .combo-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .combo-card__info {
-            padding: 20px;
-        }
-
-        .combo-card__price {
-            font-weight: 700;
-            color: var(--primary-color);
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .old-price {
-            text-decoration: line-through;
-            color: #999;
-            margin-left: 8px;
-            font-size: 16px;
-        }
-
-        .combo-card__title {
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 18px;
-        }
-
-        .combo-card__description {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        .combo-card__actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 30px 0;
-            margin-top: 40px;
-        }
-
-        .footer__copyright {
-            text-align: center;
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-        }
-
-        /* Кнопка "Наверх" */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 56px;
-            height: 56px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            background: #1e3a22;
-            transform: scale(1.1);
-        }
-
-        .scroll-top:active {
-            transform: scale(0.95);
-        }
-
-        /* Адаптивность */
-        @media (max-width: 1199px) {
-            .hero__container,
-            .giftset__container {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero__image {
-                order: -1;
-            }
-            
-            .hero__title {
-                font-size: 48px;
-            }
-            
-            .hero__subtitle {
-                font-size: 26px;
-            }
-            
-            .combo__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 991px) {
-            .features__container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .products__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 767px) {
-            .header__container {
-                padding: 10px 0;
-            }
-            
-            .header__nav {
-                display: none;
-            }
-            
-            .header__cart {
-                display: none;
-            }
-            
-            .menu-toggle {
-                display: flex;
-            }
-            
-            .hero__title {
-                font-size: 36px;
-                line-height: 44px;
-            }
-            
-            .hero__subtitle {
-                font-size: 22px;
-                line-height: 26px;
-            }
-            
-            .section-title {
-                font-size: 22px;
-            }
-            
-            .features__container,
-            .products__grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .combo__grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .scroll-top {
-                width: 50px;
-                height: 50px;
-                font-size: 22px;
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .btn {
-                padding: 12px 16px;
-                min-width: 110px;
-                font-size: 14px;
-            }
-            
-            .product-card__actions,
-            .giftset__actions,
-            .combo-card__actions {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .hero__image img {
-                max-height: 300px;
-                object-fit: cover;
-            }
-            
-            .giftset__container,
-            .combo__container {
-                text-align: center;
-            }
-            
-            .giftset__content,
-            .combo-card__info {
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero__title {
-                font-size: 28px;
-                line-height: 36px;
-            }
-            
-            .hero__subtitle {
-                font-size: 18px;
-                line-height: 22px;
-            }
-            
-            .hero {
-                padding: 40px 0;
-            }
-            
-            .features,
-            .products,
-            .giftset,
-            .combo {
-                padding: 40px 0;
-            }
-            
-            .section-title {
-                font-size: 20px;
-                padding: 0 10px;
-            }
-            
-            .feature-card__title {
-                font-size: 22px;
-            }
-            
-            .feature-card__text {
-                font-size: 14px;
-            }
-            
-            .giftset__title {
-                font-size: 24px;
-            }
-            
-            .giftset__price,
-            .combo-card__price {
-                font-size: 26px;
-            }
-            
-            .scroll-top {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
-            }
-            
-            .mobile-menu {
-                width: 100%;
-            }
-            
-            .mobile-menu__link {
-                font-size: 17px;
-                padding: 15px 0;
-                border-bottom: 1px solid rgba(255,255,255,0.2);
-            }
-            
-            body {
-                font-size: 17px;
-            }
-        }
-    </style>
 </head>
 <body>
     <header class="header" id="header">
         <div class="header__container container">
             <a href="#header" class="header__logo">
-                <img src="https://via.placeholder.com/120x40?text=REVO+COFFEE" alt="REVO Coffee">
+                <img src="assets/icons/logo.png" alt="REVO Coffee">
             </a>
             
-            <nav class="header__nav" id="mainNav">
+            <nav class="header__nav">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#header" class="nav__link active">TRANG CHU</a></li>
+                    <li class="nav__item"><a href="#header" class="nav__link">TRANG CHU</a></li>
                     <li class="nav__item"><a href="#features" class="nav__link">COFFEE</a></li>
                     <li class="nav__item"><a href="#products" class="nav__link">PHIN MA</a></li>
                     <li class="nav__item"><a href="#combo" class="nav__link">MAL COMBO</a></li>
@@ -823,17 +30,13 @@
             
             <div class="header__cart">
                 <a href="#" class="cart-icon" aria-label="Shopping cart">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 3H5L5.4 5M7 5H17L17.6 3H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7 8C7 5.79086 8.79086 4 11 4C13.2091 4 15 5.79086 15 8C15 10.2091 13.2091 12 11 12C8.79086 12 7 10.2091 7 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M19 8C19 10.2091 17.2091 12 15 12C15 12 15 16 11 16C7 16 7 12 7 12C4.79086 12 3 10.2091 3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <img src="assets/icons/coffee-cart.png" alt="Cart">
                     <span class="cart-count">2</span>
                 </a>
             </div>
             
             <!-- Гамбургер-меню для мобильных -->
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+            <button class="menu-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -841,28 +44,35 @@
         </div>
     </header>
 
-    <!-- Мобильное меню -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu__close" id="menuClose">&times;</button>
-        <nav>
-            <ul class="mobile-menu__list">
-                <li class="mobile-menu__item"><a href="#header" class="mobile-menu__link active">TRANG CHU</a></li>
-                <li class="mobile-menu__item"><a href="#features" class="mobile-menu__link">COFFEE</a></li>
-                <li class="mobile-menu__item"><a href="#products" class="mobile-menu__link">PHIN MA</a></li>
-                <li class="mobile-menu__item"><a href="#combo" class="mobile-menu__link">MAL COMBO</a></li>
-                <li class="mobile-menu__item"><a href="#combo" class="mobile-menu__link">PHINPHE</a></li>
-                <li class="mobile-menu__item"><a href="#giftset" class="mobile-menu__link">GIFTSET</a></li>
-                <li class="mobile-menu__item"><a href="#footer" class="mobile-menu__link">LIENHE</a></li>
-                <li class="mobile-menu__item"><a href="#personalized" class="mobile-menu__link">YOUR PERSONALIZED</a></li>
+    <!-- Сайдбар мобильного меню -->
+    <div class="sidebar">
+        <div class="sidebar__header">
+            <a href="#header" class="sidebar__logo">
+                <img src="assets/icons/logo.png" alt="REVO Coffee">
+            </a>
+            <button class="sidebar__close" aria-label="Close menu">
+                &times;
+            </button>
+        </div>
+        <nav class="sidebar__nav">
+            <ul class="sidebar__list">
+                <li class="sidebar__item"><a href="#header" class="sidebar__link active">TRANG CHU</a></li>
+                <li class="sidebar__item"><a href="#features" class="sidebar__link">COFFEE</a></li>
+                <li class="sidebar__item"><a href="#products" class="sidebar__link">PHIN MA</a></li>
+                <li class="sidebar__item"><a href="#combo" class="sidebar__link">MAL COMBO</a></li>
+                <li class="sidebar__item"><a href="#combo" class="sidebar__link">PHINPHE</a></li>
+                <li class="sidebar__item"><a href="#giftset" class="sidebar__link">GIFTSET</a></li>
+                <li class="sidebar__item"><a href="#footer" class="sidebar__link">LIENHE</a></li>
+                <li class="sidebar__item"><a href="#personalized" class="sidebar__link">YOUR PERSONALIZED</a></li>
             </ul>
         </nav>
-        <div class="mobile-menu__footer">
+        <div class="sidebar__footer">
             <p>&copy; 2023 REVO Coffee. All rights reserved.</p>
         </div>
     </div>
 
     <!-- Overlay для затемнения фона -->
-    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="nav-overlay"></div>
 
     <main class="main">
         <section class="hero" id="hero">
@@ -872,7 +82,7 @@
                     <h2 class="hero__subtitle">Your Personalized Coffee</h2>
                 </div>
                 <div class="hero__image">
-                    <img src="https://via.placeholder.com/400x400?text=Coffee+Products" alt="Coffee products">
+                    <img src="assets/img/hero-bg.png" alt="Coffee products">
                 </div>
             </div>
         </section>
@@ -883,48 +93,28 @@
                 <div class="features__container">
                     <div class="feature-card">
                         <div class="feature-card__icon">
-                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 8V4" stroke="#2c5530" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M15.5 14C16.3284 14 17 13.3284 17 12.5C17 11.6716 16.3284 11 15.5 11C14.6716 11 14 11.6716 14 12.5C14 13.3284 14.6716 14 15.5 14Z" stroke="#2c5530" stroke-width="2"/>
-                                <path d="M8.5 11C9.32843 11 10 11.6716 10 12.5C10 13.3284 9.32843 14 8.5 14C7.67157 14 7 13.3284 7 12.5C7 11.6716 7.67157 11 8.5 11Z" stroke="#2c5530" stroke-width="2"/>
-                                <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3" stroke="#2c5530" stroke-width="2"/>
-                                <path d="M18.275 17.098L20.6992 21.2992" stroke="#2c5530" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M5.38281 17.0352L2.97537 21.1992" stroke="#2c5530" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
+                            <img src="assets/icons/coffee-mountain.png" alt="Mountain">
                         </div>
                         <h3 class="feature-card__title">Nguon goc</h3>
                         <p class="feature-card__text">Nhung hat ca phe Arabica den tu ngun goc va chit lugng cao</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-card__icon">
-                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="#2c5530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M9.5 9.5C9.5 9.5 10 8 12 8C14 8 14.5 9.5 14.5 9.5" stroke="#2c5530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M9.5 12.5C9.5 12.5 10 14 12 14C14 14 14.5 12.5 14.5 12.5" stroke="#2c5530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <img src="assets/icons/coffee-seed.png" alt="Seed">
                         </div>
                         <h3 class="feature-card__title">Chat luong</h3>
                         <p class="feature-card__text">lung mbt hat ca phe la ca mbt qua qua trinh raing xay ky</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-card__icon">
-                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#2c5530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12 8V12" stroke="#2c5530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12 16H12.01" stroke="#2c5530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <img src="assets/icons/coffee-shop.png" alt="Shop">
                         </div>
                         <h3 class="feature-card__title">Cac loai hat</h3>
                         <p class="feature-card__text">70% chat luong tách ca ph green bean</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-card__icon">
-                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#2c5530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16 8H8" stroke="#2c5530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16 12H8" stroke="#2c5530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16 16H12" stroke="#2c5530" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <img src="assets/icons/coffee-machine.png" alt="Machine">
                         </div>
                         <h3 class="feature-card__title">Pha che</h3>
                         <p class="feature-card__text">Nhung hat ca phe duoc let xsc Robusta dat chat luing theo nghe nhin ca phe</p>
@@ -940,7 +130,7 @@
                 <div class="products__grid">
                     <article class="product-card">
                         <div class="product-card__image">
-                            <img src="https://via.placeholder.com/150?text=REVO+Morning" alt="REVO Morning">
+                            <img src="assets/img/coffee1.png" alt="REVO Morning">
                         </div>
                         <h3 class="product-card__title">REVO Morning</h3>
                         <p class="product-card__description">hu ngot, hudng hoz</p>
@@ -952,7 +142,7 @@
                     </article>
                     <article class="product-card">
                         <div class="product-card__image">
-                            <img src="https://via.placeholder.com/150?text=REVO+Everyday" alt="REVO Everyday">
+                            <img src="assets/img/coffee2.png" alt="REVO Everyday">
                         </div>
                         <h3 class="product-card__title">REVO Everyday</h3>
                         <p class="product-card__description">can bing, hiu dang, vi chocolate</p>
@@ -964,7 +154,7 @@
                     </article>
                     <article class="product-card">
                         <div class="product-card__image">
-                            <img src="https://via.placeholder.com/150?text=REVO+Origin" alt="REVO Origin">
+                            <img src="assets/img/coffee3.png" alt="REVO Origin">
                         </div>
                         <h3 class="product-card__title">REVO Origin</h3>
                         <p class="product-card__description">hau ngot, it dang, vi chua dau</p>
@@ -976,7 +166,7 @@
                     </article>
                     <article class="product-card">
                         <div class="product-card__image">
-                            <img src="https://via.placeholder.com/150?text=REVO+Dam+Da" alt="REVO Dam Da">
+                            <img src="assets/img/coffee4.png" alt="REVO Dam Da">
                         </div>
                         <h3 class="product-card__title">REVO Dam Da</h3>
                         <p class="product-card__description">dim da, ding, truydn thong</p>
@@ -993,7 +183,7 @@
         <section class="giftset" id="giftset">
             <div class="giftset__container container">
                 <div class="giftset__image">
-                    <img src="https://via.placeholder.com/400x500?text=Giftset" alt="Giftset">
+                    <img src="assets/img/giftset.png" alt="Giftset">
                 </div>
                 <div class="giftset__content">
                     <h2 class="section-title">Best Gift For Best Friend</h2>
@@ -1014,7 +204,7 @@
                 <h3 class="combo__subtitle">COMBO PHIN PHE</h3>
                 <div class="combo__grid">
                     <article class="combo-card">
-                        <img src="https://via.placeholder.com/300x200?text=Combo" alt="Combo">
+                        <img src="assets/img/combo.png" alt="Combo">
                         <div class="combo-card__info">
                             <div class="combo-card__price">147.000 <span class="old-price">155.000</span></div>
                             <h3 class="combo-card__title">Combo Revo Dam Da</h3>
@@ -1026,7 +216,7 @@
                         </div>
                     </article>
                     <article class="combo-card">
-                        <img src="https://via.placeholder.com/300x200?text=Combo+1" alt="Combo 1">
+                        <img src="assets/img/combo1.png" alt="Combo 1">
                         <div class="combo-card__info">
                             <div class="combo-card__price">156.000 <span class="old-price">165.000</span></div>
                             <h3 class="combo-card__title">Combo Revo Everyday</h3>
@@ -1038,7 +228,7 @@
                         </div>
                     </article>
                     <article class="combo-card">
-                        <img src="https://via.placeholder.com/300x200?text=Combo+2" alt="Combo 2">
+                        <img src="assets/img/combo2.png" alt="Combo 2">
                         <div class="combo-card__info">
                             <div class="combo-card__price">275.000 <span class="old-price">260.000</span></div>
                             <h3 class="combo-card__title">Combo Revo Honey</h3>
@@ -1065,161 +255,6 @@
         ↑
     </button>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Мобильное меню
-            const menuToggle = document.getElementById('menuToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuClose = document.getElementById('menuClose');
-            const navOverlay = document.getElementById('navOverlay');
-            
-            // Функция открытия меню
-            function openMenu() {
-                mobileMenu.classList.add('active');
-                navOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                menuToggle.setAttribute('aria-expanded', 'true');
-                menuToggle.classList.add('active');
-            }
-            
-            // Функция закрытия меню
-            function closeMenu() {
-                mobileMenu.classList.remove('active');
-                navOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuToggle.classList.remove('active');
-            }
-            
-            // Обработчики для гамбургер-меню
-            if (menuToggle) {
-                menuToggle.addEventListener('click', function() {
-                    if (mobileMenu.classList.contains('active')) {
-                        closeMenu();
-                    } else {
-                        openMenu();
-                    }
-                });
-            }
-            
-            // Обработчик для кнопки закрытия
-            if (menuClose) {
-                menuClose.addEventListener('click', closeMenu);
-            }
-            
-            // Обработчик для оверлея
-            if (navOverlay) {
-                navOverlay.addEventListener('click', closeMenu);
-            }
-            
-            // Закрытие меню при клике на ссылку
-            const mobileLinks = document.querySelectorAll('.mobile-menu__link');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-            
-            // Закрытие меню при нажатии Escape
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                    closeMenu();
-                }
-            });
-            
-            // Закрытие меню при изменении размера экрана
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 767 && mobileMenu.classList.contains('active')) {
-                    closeMenu();
-                }
-            });
-            
-            // Кнопка "Наверх"
-            const scrollTopButton = document.getElementById('scrollTop');
-            
-            if (scrollTopButton) {
-                // Показываем кнопку после скролла
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 300) {
-                        scrollTopButton.classList.add('visible');
-                    } else {
-                        scrollTopButton.classList.remove('visible');
-                    }
-                });
-                
-                // Прокрутка к началу страницы
-                scrollTopButton.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-        });
-    </script>
-    <!-- Overlay для затемнения фона мобильного меню -->
-<div class="nav-overlay" id="navOverlay"></div>
-
-<!-- Кнопка "Наверх" -->
-<button class="scroll-top" id="scrollTop" aria-label="Наверх">↑</button>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Гамбургер-меню
-    const menuToggle = document.querySelector('.menu-toggle');
-    const headerNav = document.querySelector('.header__nav');
-    const navOverlay = document.getElementById('navOverlay');
-    
-    if (menuToggle && headerNav && navOverlay) {
-        menuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            headerNav.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            document.body.style.overflow = headerNav.classList.contains('active') ? 'hidden' : '';
-            this.setAttribute('aria-expanded', this.classList.contains('active'));
-        });
-        
-        navOverlay.addEventListener('click', function() {
-            menuToggle.classList.remove('active');
-            headerNav.classList.remove('active');
-            this.classList.remove('active');
-            document.body.style.overflow = '';
-            menuToggle.setAttribute('aria-expanded', 'false');
-        });
-        
-        // Закрытие меню при клике на ссылку
-        const navLinks = document.querySelectorAll('.nav__link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 767) {
-                    menuToggle.classList.remove('active');
-                    headerNav.classList.remove('active');
-                    navOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        });
-    }
-    
-    // Кнопка "Наверх"
-    const scrollTopButton = document.getElementById('scrollTop');
-    
-    if (scrollTopButton) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                scrollTopButton.classList.add('visible');
-            } else {
-                scrollTopButton.classList.remove('visible');
-            }
-        });
-        
-        scrollTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-});
-</script>
+    <script src="scripts/menu.js"></script>
 </body>
 </html>
