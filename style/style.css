@@ -882,3 +882,188 @@ html, body {
         font-size: 22px;
     }
 }
+/* Гамбургер-меню для мобильных */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Overlay для затемнения */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 998;
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Мобильное меню */
+@media (max-width: 767px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .header__nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background-color: #2c5530;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        padding: 80px 30px 30px;
+        transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        z-index: 999;
+        overflow-y: auto;
+    }
+    
+    .header__nav.active {
+        right: 0;
+    }
+    
+    .nav__list {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .nav__item {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .nav__link {
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 12px 15px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav__link:hover,
+    .nav__link.active {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #e67e22;
+        padding-left: 20px;
+    }
+    
+    .header__cart {
+        display: none;
+    }
+    
+    /* Фиксированное меню на мобильных */
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    /* Исправление последних разделов */
+    .giftset__container,
+    .combo__container {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+    
+    .giftset__content,
+    .combo-card {
+        margin: 0 auto !important;
+        max-width: 100% !important;
+    }
+    
+    .combo__grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Кнопка "Наверх" для мобильных */
+    .scroll-top {
+        width: 52px;
+        height: 52px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 22px;
+    }
+}
+
+/* Кнопка "Наверх" */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background: #2c5530;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: #1e3a22;
+    transform: scale(1.1);
+}
+
+.scroll-top:active {
+    transform: scale(0.95);
+    background: #162b18;
+}
