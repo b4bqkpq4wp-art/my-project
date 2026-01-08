@@ -7,6 +7,743 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <style>
+        /* ВСЕ СТИЛИ В ОДНОМ ФАЙЛЕ ДЛЯ ГАРАНТИРОВАННОЙ РАБОТЫ */
+        
+        /* Сброс стилей */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c5530;
+            --secondary-color: #1a2a6c;
+            --text-color: #333;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+            overflow-x: hidden;
+            font-size: 17px;
+            position: relative;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .header__logo img {
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .header__logo img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Навигация - десктопная версия */
+        .header__nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav__list {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 17px;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .nav__link:hover,
+        .nav__link:focus {
+            color: #e67e22;
+        }
+
+        .nav__link:focus {
+            outline: 2px solid #e67e22;
+            outline-offset: 2px;
+        }
+
+        .nav__link:active {
+            transform: translateY(1px);
+        }
+
+        /* Корзина */
+        .header__cart {
+            margin-left: 20px;
+        }
+
+        .cart-icon {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cart-icon img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #e67e22;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        /* Мобильное меню (гамбургер) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 100;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 3px;
+            transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+            position: relative;
+        }
+
+        /* Анимация гамбургера при открытии */
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Сайдбар меню */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            height: 100vh;
+            width: 280px;
+            background-color: var(--primary-color);
+            transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+            z-index: 999;
+            padding: 20px 0;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .sidebar__logo img {
+            height: 35px;
+        }
+
+        .sidebar__close {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar__nav {
+            padding: 0 20px;
+        }
+
+        .sidebar__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar__item {
+            margin-bottom: 5px;
+        }
+
+        .sidebar__link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 12px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar__link:hover,
+        .sidebar__link.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #e67e22;
+        }
+
+        .sidebar__footer {
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        /* Overlay для затемнения фона */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 998;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero section */
+        .hero {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .hero__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero__title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 54px;
+            font-weight: 800;
+            line-height: 70px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .hero__subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 34px;
+            color: var(--primary-color);
+        }
+
+        .hero__image img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Features section */
+        .features {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .features__container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .feature-card {
+            text-align: center;
+            max-width: 250px;
+            margin: 0 auto;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card__icon {
+            margin-bottom: 20px;
+        }
+
+        .feature-card__icon img {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        .feature-card__title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .feature-card__text {
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            line-height: 20px;
+            color: #666;
+        }
+
+        /* Products section */
+        .products {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .products__container {
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-family: 'Nunito', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .products__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .btn--primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn--primary:hover {
+            background-color: #1e3a22;
+            transform: translateY(-2px);
+        }
+
+        .btn--secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn--secondary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Giftset section */
+        .giftset {
+            padding: 80px 0;
+        }
+
+        .giftset__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .giftset__image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .giftset__title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .giftset__description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .giftset__price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .giftset__actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Combo section */
+        .combo {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .combo__subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 30px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+
+        .combo__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        .footer__copyright {
+            text-align: center;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+        }
+
+        /* Кнопка "Наверх" */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: #1e3a22;
+            transform: scale(1.1);
+        }
+
+        .scroll-top:active {
+            transform: scale(0.95);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1199px) {
+            .hero__container,
+            .giftset__container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero__image {
+                order: -1;
+            }
+            
+            .hero__title {
+                font-size: 48px;
+            }
+            
+            .hero__subtitle {
+                font-size: 26px;
+            }
+
+            .combo__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 991px) {
+            .features__container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .products__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .header__container {
+                padding: 10px 0;
+            }
+            
+            .header__nav {
+                display: none;
+            }
+            
+            .header__cart {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .hero__title {
+                font-size: 36px;
+                line-height: 44px;
+            }
+            
+            .hero__subtitle {
+                font-size: 22px;
+                line-height: 26px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .features__container {
+                grid-template-columns: 1fr;
+            }
+            
+            .products__grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Полная адаптация раздела "Best Gift For Best Friend" */
+            .giftset__container {
+                grid-template-columns: 1fr !important;
+                text-align: center !important;
+            }
+            
+            .giftset__content {
+                margin: 0 auto !important;
+                max-width: 100% !important;
+                padding: 0 15px;
+            }
+            
+            .giftset__image {
+                order: 2;
+            }
+            
+            .combo__grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .scroll-top {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            /* Увеличиваем touch-зоны для мобильных */
+            .btn {
+                min-width: 120px;
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+            
+            .product-card__actions,
+            .giftset__actions,
+            .combo-card__actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            /* Уменьшаем изображение в hero для мобильных */
+            .hero__image img {
+                max-height: 300px;
+                object-fit: cover;
+            }
+            
+            /* Улучшаем отображение раздела COFFEE BUILD YOUR BASE */
+            .features__container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-card {
+                max-width: 100%;
+                width: 100%;
+                padding: 20px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero__title {
+                font-size: 28px;
+                line-height: 36px;
+            }
+            
+            .hero__subtitle {
+                font-size: 18px;
+                line-height: 22px;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .features,
+            .products,
+            .giftset,
+            .combo {
+                padding: 40px 0;
+            }
+            
+            /* Дополнительные стили для очень маленьких экранов для раздела "Best Gift For Best Friend" */
+            .section-title {
+                font-size: 20px;
+                padding: 0 10px;
+            }
+            
+            .feature-card__title {
+                font-size: 22px;
+            }
+            
+            .feature-card__text {
+                font-size: 14px;
+            }
+
+            .giftset__title {
+                font-size: 24px;
+            }
+            
+            .giftset__price {
+                font-size: 28px;
+            }
+            
+            .scroll-top {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+            
+            body {
+                font-size: 17px;
+            }
+            
+            .header {
+                position: sticky;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header" id="header">
@@ -255,6 +992,82 @@
         ↑
     </button>
     
-    <script src="scripts/menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Мобильное меню
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const navOverlay = document.querySelector('.nav-overlay');
+            const sidebarClose = document.querySelector('.sidebar__close');
+            
+            if (menuToggle && sidebar && navOverlay) {
+                // Открытие меню
+                menuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    sidebar.classList.toggle('active');
+                    navOverlay.classList.toggle('active');
+                    document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+                });
+                
+                // Закрытие меню через кнопку закрытия
+                if (sidebarClose) {
+                    sidebarClose.addEventListener('click', closeMenu);
+                }
+                
+                // Закрытие меню при клике на overlay
+                navOverlay.addEventListener('click', closeMenu);
+                
+                // Закрытие меню при нажатии Escape
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+                        closeMenu();
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                const sidebarLinks = document.querySelectorAll('.sidebar__link');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+                
+                // Закрытие меню при изменении размера экрана
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 767 && sidebar.classList.contains('active')) {
+                        closeMenu();
+                    }
+                });
+                
+                // Функция закрытия меню
+                function closeMenu() {
+                    menuToggle.classList.remove('active');
+                    sidebar.classList.remove('active');
+                    navOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            // Кнопка "Наверх" - исправленная версия
+            const scrollTopButton = document.getElementById('scrollTop');
+            
+            if (scrollTopButton) {
+                // Показываем кнопку после скролла
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        scrollTopButton.classList.add('visible');
+                    } else {
+                        scrollTopButton.classList.remove('visible');
+                    }
+                });
+                
+                // Прокрутка к началу страницы
+                scrollTopButton.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
