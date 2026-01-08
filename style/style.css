@@ -651,3 +651,117 @@ body {
         font-size: 14px;
     }
 }
+/* Добавляем в конце файла или в соответствующий раздел медиа-запросов */
+
+/* Кнопка "Наверх" - улучшенная версия */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #2c5530;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px; /* WCAG минимум для touch элементов */
+    min-height: 44px; /* WCAG минимум для touch элементов */
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: #1e3a22;
+    transform: scale(1.1);
+}
+
+.scroll-top:active {
+    transform: scale(0.95);
+    background: #162b18;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 767px) {
+    /* Фиксируем хедер при скролле */
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    /* Увеличиваем размеры touch-элементов */
+    .nav__link,
+    .sidebar__link,
+    .btn {
+        min-height: 44px; /* WCAG минимум */
+        padding: 12px 16px;
+    }
+    
+    /* Улучшаем размеры кнопки "Наверх" */
+    .scroll-top {
+        width: 56px;
+        height: 56px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+    }
+    
+    /* Увеличиваем размеры текста для мобильных */
+    body {
+        font-size: 17px; /* Рекомендация HIG(iOS) */
+    }
+    
+    .section-title {
+        font-size: 22px;
+        padding: 0 10px;
+    }
+    
+    .feature-card__title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Дополнительные улучшения для маленьких экранов */
+    .scroll-top {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+    
+    /* Увеличиваем отступы для удобства */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Проверяем отсутствие горизонтального скролла */
+    body {
+        overflow-x: hidden;
+    }
+    
+    /* Увеличиваем контраст для доступности */
+    .nav__link,
+    .sidebar__link {
+        font-size: 18px; /* Увеличенный размер для мобильных */
+    }
+}
+
+/* Предотвращение горизонтального скролла */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
