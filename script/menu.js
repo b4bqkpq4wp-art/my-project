@@ -1,59 +1,70 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Получаем элементы
-    const menuToggle = document.getElementById('menuToggle');
-    const mainNav = document.getElementById('mainNav');
+    // Мобильное меню
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const sidebarClose = document.querySelector('.sidebar__close');
     
-    // Создаем оверлей для меню, если его нет
-    let navOverlay = document.querySelector('.nav-overlay');
-    if (!navOverlay) {
-        navOverlay = document.createElement('div');
-        navOverlay.className = 'nav-overlay';
-        document.body.appendChild(navOverlay);
+    // Функция закрытия меню
+    function closeMenu() {
+        if (sidebar.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            sidebar.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
     
-    // Функция открытия/закрытия меню
-    function toggleMenu() {
-        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        
-        // Переключаем состояния
-        menuToggle.classList.toggle('active');
-        menuToggle.setAttribute('aria-expanded', !isExpanded);
-        mainNav.classList.toggle('active');
-        navOverlay.classList.toggle('active');
-        
-        // Блокируем скролл при открытом меню
-        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+    // Функция открытия меню
+    function openMenu() {
+        if (!sidebar.classList.contains('active')) {
+            menuToggle.classList.add('active');
+            sidebar.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
     }
     
-    // Обработчики событий
-    if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', toggleMenu);
-        navOverlay.addEventListener('click', toggleMenu);
-        
-        // Закрытие меню при клике на ссылку
-        const navLinks = document.querySelectorAll('.nav__link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    toggleMenu();
-                }
-            });
-        });
-        
-        // Закрытие меню при нажатии Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mainNav.classList.contains('active')) {
-                toggleMenu();
-            }
-        });
-        
-        // Закрытие меню при изменении размера окна
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && mainNav.classList.contains('active')) {
-                toggleMenu();
+    // Открытие/закрытие меню при клике на гамбургер
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            if (sidebar.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
             }
         });
     }
+    
+    // Закрытие меню при клике на крестик
+    if (sidebarClose) {
+        sidebarClose.addEventListener('click', closeMenu);
+    }
+    
+    // Закрытие меню при клике на overlay
+    if (navOverlay) {
+        navOverlay.addEventListener('click', closeMenu);
+    }
+    
+    // Закрытие меню при нажатии Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+    
+    // Закрытие меню при клике на ссылку в сайдбаре
+    const sidebarLinks = document.querySelectorAll('.sidebar__link');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+    
+    // Закрытие меню при изменении размера экрана (если стало десктопным)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 767 && sidebar.classList.contains('active')) {
+            closeMenu();
+        }
+    });
     
     // Кнопка "Наверх"
     const scrollTopButton = document.getElementById('scrollTop');
@@ -76,4 +87,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Анимация при наведении на изображения
+    const images = document.querySelectorAll('.product-card__image img, .combo-card img, .giftset__image img, .hero__image img');
+    
+    images.forEach(img => {
+        img.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        img.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
 });

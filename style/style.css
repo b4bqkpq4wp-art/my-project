@@ -446,6 +446,54 @@ body {
     gap: 30px;
 }
 
+.combo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.combo-card img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+.combo-card__info {
+    margin-top: 15px;
+}
+
+.combo-card__price {
+    font-weight: 700;
+    color: #2c5530;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.combo-card__title {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.combo-card__description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.combo-card__actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 /* Footer */
 .footer {
     background-color: #2c5530;
@@ -516,6 +564,10 @@ body {
     .hero__subtitle {
         font-size: 26px;
     }
+    
+    .combo__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 991px) {
@@ -524,10 +576,6 @@ body {
     }
     
     .products__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .combo__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -571,8 +619,20 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .giftset__container,
+    .combo__container {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+    
+    .giftset__content,
     .combo__grid {
-        grid-template-columns: 1fr;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    
+    .combo__grid {
+        grid-template-columns: 1fr !important;
     }
     
     .scroll-top {
@@ -587,6 +647,7 @@ body {
     .btn {
         min-width: 120px;
         padding: 12px 24px;
+        font-size: 16px;
     }
     
     .product-card__actions,
@@ -650,420 +711,12 @@ body {
     .feature-card__text {
         font-size: 14px;
     }
-}
-/* Добавляем в конце файла или в соответствующий раздел медиа-запросов */
-
-/* Кнопка "Наверх" - улучшенная версия */
-.scroll-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background: #2c5530;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 44px; /* WCAG минимум для touch элементов */
-    min-height: 44px; /* WCAG минимум для touch элементов */
-}
-
-.scroll-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.scroll-top:hover {
-    background: #1e3a22;
-    transform: scale(1.1);
-}
-
-.scroll-top:active {
-    transform: scale(0.95);
-    background: #162b18;
-}
-
-/* Адаптация для мобильных устройств */
-@media (max-width: 767px) {
-    /* Фиксируем хедер при скролле */
+    
+    body {
+        font-size: 17px;
+    }
+    
     .header {
         position: sticky;
-        top: 0;
-        z-index: 1000;
     }
-    
-    /* Увеличиваем размеры touch-элементов */
-    .nav__link,
-    .sidebar__link,
-    .btn {
-        min-height: 44px; /* WCAG минимум */
-        padding: 12px 16px;
-    }
-    
-    /* Улучшаем размеры кнопки "Наверх" */
-    .scroll-top {
-        width: 56px;
-        height: 56px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 24px;
-    }
-    
-    /* Увеличиваем размеры текста для мобильных */
-    body {
-        font-size: 17px; /* Рекомендация HIG(iOS) */
-    }
-    
-    .section-title {
-        font-size: 22px;
-        padding: 0 10px;
-    }
-    
-    .feature-card__title {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    /* Дополнительные улучшения для маленьких экранов */
-    .scroll-top {
-        width: 52px;
-        height: 52px;
-        font-size: 22px;
-    }
-    
-    /* Увеличиваем отступы для удобства */
-    .container {
-        padding: 0 15px;
-    }
-    
-    /* Проверяем отсутствие горизонтального скролла */
-    body {
-        overflow-x: hidden;
-    }
-    
-    /* Увеличиваем контраст для доступности */
-    .nav__link,
-    .sidebar__link {
-        font-size: 18px; /* Увеличенный размер для мобильных */
-    }
-}
-
-/* Предотвращение горизонтального скролла */
-html, body {
-    width: 100%;
-    overflow-x: hidden;
-}
-/* Исправление выравнивания для мобильных устройств */
-@media (max-width: 767px) {
-    /* Исправление для раздела Giftset */
-    .giftset__container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .giftset__content {
-        margin-top: 30px;
-    }
-    
-    /* Исправление для раздела Combo */
-    .combo__grid {
-        grid-template-columns: 1fr;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    
-    .combo-card {
-        max-width: 100%;
-    }
-    
-    /* Общие исправления для всех разделов */
-    .container {
-        padding: 0 15px;
-    }
-    
-    .section-title {
-        text-align: center;
-        padding: 0 10px;
-    }
-    
-    /* Улучшение отступов */
-    .giftset,
-    .combo {
-        padding: 60px 0;
-    }
-}
-/* Исправление отображения гамбургер-меню */
-@media (max-width: 767px) {
-    .header__nav {
-        display: none; /* Скрытие основного меню */
-    }
-    
-    .menu-toggle {
-        display: flex; /* Показываем гамбургер-меню */
-    }
-    
-    /* Исправление для сайдбара */
-    .sidebar {
-        right: -280px; /* Исправлено положение */
-        transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
-    
-    .sidebar.active {
-        right: 0;
-    }
-    
-    /* Улучшение touch-зоны для мобильных */
-    .nav__link,
-    .sidebar__link {
-        min-height: 44px;
-        padding: 12px 15px;
-    }
-}
-/* Кнопка "Наверх" - исправленная версия */
-.scroll-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 56px;
-    height: 56px;
-    background: #2c5530;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
-}
-
-.scroll-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.scroll-top:hover {
-    background: #1e3a22;
-    transform: scale(1.1);
-}
-
-.scroll-top:active {
-    transform: scale(0.95);
-    background: #162b18;
-}
-
-/* Адаптация для мобильных устройств */
-@media (max-width: 767px) {
-    .scroll-top {
-        width: 52px;
-        height: 52px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 22px;
-    }
-}
-/* Гамбургер-меню для мобильных */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 100;
-}
-
-.menu-toggle span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 3px;
-    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.menu-toggle.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-/* Overlay для затемнения */
-.nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease;
-    z-index: 998;
-}
-
-.nav-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Мобильное меню */
-@media (max-width: 767px) {
-    .menu-toggle {
-        display: flex;
-    }
-    
-    .header__nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 300px;
-        height: 100vh;
-        background-color: #2c5530;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        padding: 80px 30px 30px;
-        transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-        z-index: 999;
-        overflow-y: auto;
-    }
-    
-    .header__nav.active {
-        right: 0;
-    }
-    
-    .nav__list {
-        flex-direction: column;
-        gap: 0;
-    }
-    
-    .nav__item {
-        width: 100%;
-        margin-bottom: 5px;
-    }
-    
-    .nav__link {
-        display: block;
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: 600;
-        padding: 12px 15px;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .nav__link:hover,
-    .nav__link.active {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #e67e22;
-        padding-left: 20px;
-    }
-    
-    .header__cart {
-        display: none;
-    }
-    
-    /* Фиксированное меню на мобильных */
-    .header {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-    
-    /* Исправление последних разделов */
-    .giftset__container,
-    .combo__container {
-        grid-template-columns: 1fr !important;
-        text-align: center;
-    }
-    
-    .giftset__content,
-    .combo-card {
-        margin: 0 auto !important;
-        max-width: 100% !important;
-    }
-    
-    .combo__grid {
-        grid-template-columns: 1fr !important;
-    }
-    
-    /* Кнопка "Наверх" для мобильных */
-    .scroll-top {
-        width: 52px;
-        height: 52px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 22px;
-    }
-}
-
-/* Кнопка "Наверх" */
-.scroll-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 56px;
-    height: 56px;
-    background: #2c5530;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
-}
-
-.scroll-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.scroll-top:hover {
-    background: #1e3a22;
-    transform: scale(1.1);
-}
-
-.scroll-top:active {
-    transform: scale(0.95);
-    background: #162b18;
 }
