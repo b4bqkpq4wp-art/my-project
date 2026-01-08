@@ -765,3 +765,120 @@ html, body {
     width: 100%;
     overflow-x: hidden;
 }
+/* Исправление выравнивания для мобильных устройств */
+@media (max-width: 767px) {
+    /* Исправление для раздела Giftset */
+    .giftset__container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .giftset__content {
+        margin-top: 30px;
+    }
+    
+    /* Исправление для раздела Combo */
+    .combo__grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .combo-card {
+        max-width: 100%;
+    }
+    
+    /* Общие исправления для всех разделов */
+    .container {
+        padding: 0 15px;
+    }
+    
+    .section-title {
+        text-align: center;
+        padding: 0 10px;
+    }
+    
+    /* Улучшение отступов */
+    .giftset,
+    .combo {
+        padding: 60px 0;
+    }
+}
+/* Исправление отображения гамбургер-меню */
+@media (max-width: 767px) {
+    .header__nav {
+        display: none; /* Скрытие основного меню */
+    }
+    
+    .menu-toggle {
+        display: flex; /* Показываем гамбургер-меню */
+    }
+    
+    /* Исправление для сайдбара */
+    .sidebar {
+        right: -280px; /* Исправлено положение */
+        transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    
+    .sidebar.active {
+        right: 0;
+    }
+    
+    /* Улучшение touch-зоны для мобильных */
+    .nav__link,
+    .sidebar__link {
+        min-height: 44px;
+        padding: 12px 15px;
+    }
+}
+/* Кнопка "Наверх" - исправленная версия */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background: #2c5530;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: #1e3a22;
+    transform: scale(1.1);
+}
+
+.scroll-top:active {
+    transform: scale(0.95);
+    background: #162b18;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 767px) {
+    .scroll-top {
+        width: 52px;
+        height: 52px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 22px;
+    }
+}
