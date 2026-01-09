@@ -418,11 +418,48 @@ body {
     padding: 80px 0;
 }
 
-.giftset__container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
+@media (max-width: 767px) {
+    .giftset__container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    /* Убираем order: 2, чтобы изображение было первым */
+    .giftset__image {
+        order: 1;
+        margin: 0 auto 20px auto;
+    }
+    
+    /* Устанавливаем order: 2 для контента, чтобы он был вторым */
+    .giftset__content {
+        order: 2;
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    /* Дополнительные стили для правильного отображения */
+    .giftset__title {
+        font-size: 24px;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    
+    .giftset__description {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+    
+    .giftset__price {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .giftset__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
 /* Combo section */
