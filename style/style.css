@@ -393,19 +393,19 @@ body {
 }
 
 .btn--primary {
-    background-color: #1a2a6c;
+    background-color: #2c5530;
     color: white;
 }
 
 .btn--primary:hover {
-    background-color: #1a2a6c;
+    background-color: #1e3a22;
     transform: translateY(-2px);
 }
 
 .btn--secondary {
     background-color: transparent;
-    color: #1a2a6c;
-    border: 1px solid #1a2a6c;
+    color: #2c5530;
+    border: 1px solid #2c5530;
 }
 
 .btn--secondary:hover {
@@ -531,7 +531,7 @@ body {
 
 /* Footer */
 .footer {
-    background-color: #1a2a6c;
+    background-color: #2c5530;
     color: white;
     padding: 30px 0;
     margin-top: 40px;
@@ -573,7 +573,7 @@ body {
 }
 
 .scroll-top:hover {
-    background: #1a2a6c;
+    background: #1e3a22;
     transform: scale(1.1);
 }
 
